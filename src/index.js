@@ -2,13 +2,23 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import Home from './Home';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import App from "./App";
+import Login from './Login';
 import reportWebVitals from './reportWebVitals';
 import 'tachyons';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Home />
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />}>
+          <Route path="App" element={<App />} />
+          <Route path="Login" element={<Login />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   </React.StrictMode>
 );
 
