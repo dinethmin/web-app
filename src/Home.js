@@ -1,14 +1,20 @@
 import React from "react";
+import { Outlet, Link } from "react-router-dom";
+
 
 const Home = () => {
     return (
-        <div className="tc bg-light-green dib br3 pa3 ma2 grow bw2 shadow-5">
-            <img alt="robots" src={`https://robohash.org/1?size=200x200`} />
-            <div>
-                <h2>Robot 1</h2>
-                <p>robot.1@gmail.com</p>
-            </div>
-        </div>
+        <>
+            <header className="bg-gray fixed w-100 ph3 pv3 pv4-ns ph4-m ph5-l">
+                <nav className="fixed f6 fw6 ttu tracked">
+                    <Link className="link dim black dib mr3" to="/App" title="App">App</Link>
+                    <Link className="link dim black dib mr3" to="/Login" title="Login">Login</Link>
+                    <Link className="link dim black dib mr3" to="/App" title="App">App</Link>
+                    <Link className="link dim black dib mr3" to="/App" title="App">App</Link>
+                </nav>
+            </header>
+            <Outlet />
+        </>
     );
 }
 
