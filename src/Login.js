@@ -29,7 +29,7 @@ const Card = ({ id = 1 }) => {
                 </form>
             </main>
 
-            <footer class="pt2 pb0 ph3 ph5-m ph6-l mid-gray">
+            <footer class="pt2 pb0 ph3 ph5-m ph6-l bg-light-gray">
                 <small class="f6 db tc">©<b class="ttu">Created by Group CB</b>., All Rights Reserved</small>
             </footer>
 
