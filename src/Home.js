@@ -11,7 +11,6 @@ const Home = () => {
                     <Link className="link dim f4-ns blue dib mr3" to="/Signup" title="Signup">Signup</Link>
                     <div className="dropdown link dim f4-ns blue dib mr3">
                         <label className="dropbtn">Landlord</label>
-
                         <div className="dropdown-content f4-ns">
                             <Link to="/LandlordLogin">Login</Link>
                             <Link to="/LandlordSignup">Signup</Link>
