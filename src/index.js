@@ -4,7 +4,6 @@ import './index.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from './Home';
 import HomeLayout from './HomeLayout';
-import App from "./App";
 import Login from './Login';
 import Signup from './Signup';
 import LandlordLogin from './LandlordLogin';
@@ -20,12 +19,11 @@ root.render(
       <Routes>
         <Route path="/" element={<Home />}>
           <Route index element={<HomeLayout />} />
-          <Route path="App" element={<App />} />
           <Route path="Login" element={<Login />} />
           <Route path="Signup" element={<Signup />} />
           <Route path="LandlordLogin" element={<LandlordLogin />} />
-          <Route path="LandlordSignup" element={<LandlordSignup/>} />
-          <Route path="WardenLogin" element={<WardenLogin/>} />
+          <Route path="LandlordSignup" element={<LandlordSignup />} />
+          <Route path="WardenLogin" element={<WardenLogin />} />
         </Route>
       </Routes>
     </BrowserRouter>

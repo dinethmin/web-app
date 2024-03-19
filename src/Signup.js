@@ -25,7 +25,8 @@ const Signup = () => {
                         </div>
                     </fieldset>
                     <div className="mt3">
-                        <input className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6" type="submit" value="Sign Up" />
+                        <input className="f6 grow no-underline br-pill ba bw1 ph3 pv2 mb2 dib dark-blue" type="submit" value="Sign Up" />
+                        <input className="f6 grow no-underline br-pill ba bw1 ph3 pv2 mb2 dib dark-blue" type="reset" value="Clear" />
                     </div>
                 </form>
             </article>
