@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from './Home';
+import HomeLayout from './HomeLayout';
 import App from "./App";
 import Login from './Login';
 import Signup from './Signup';
@@ -15,9 +16,10 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />}>
+          <Route index element={<HomeLayout />} />
           <Route path="App" element={<App />} />
           <Route path="Login" element={<Login />} />
-          <Route path="Signup" element={<Signup/>}/>
+          <Route path="Signup" element={<Signup />} />
         </Route>
       </Routes>
     </BrowserRouter>
