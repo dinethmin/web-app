@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import Home from './Home';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from './Home';
 import App from "./App";
 import Login from './Login';
+import Signup from './Signup';
 import reportWebVitals from './reportWebVitals';
 import 'tachyons';
 
@@ -16,6 +17,7 @@ root.render(
         <Route path="/" element={<Home />}>
           <Route path="App" element={<App />} />
           <Route path="Login" element={<Login />} />
+          <Route path="Signup" element={<Signup/>}/>
         </Route>
       </Routes>
     </BrowserRouter>

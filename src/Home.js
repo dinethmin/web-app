@@ -9,7 +9,7 @@ const Home = () => {
                 <nav className="fixed f6 fw6 ttu tracked">
                     <Link className="link dim black dib mr3" to="/App" title="App">App</Link>
                     <Link className="link dim black dib mr3" to="/Login" title="Login">Login</Link>
-                    <Link className="link dim black dib mr3" to="/App" title="App">App</Link>
+                    <Link className="link dim black dib mr3" to="/Signup" title="Signup">Signup</Link>
                     <Link className="link dim black dib mr3" to="/App" title="App">App</Link>
                 </nav>
             </header>
