@@ -23,7 +23,6 @@ const Card = () => {
                         <input className="f6 grow no-underline br-pill ba bw1 ph3 pv2 mb2 dib dark-blue" type="reset" value="Clear" />
                     </div>
                     <div className="lh-copy mt3">
-                        <a href="#0" className="f6 link dim black db">Sign up</a>
                         <a href="#0" className="f6 link dim black db">Forgot your password?</a>
                     </div>
                 </form>
