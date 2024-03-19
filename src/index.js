@@ -8,6 +8,7 @@ import App from "./App";
 import Login from './Login';
 import Signup from './Signup';
 import LandlordLogin from './LandlordLogin';
+import LandlordSignup from './LandlordSignup';
 import reportWebVitals from './reportWebVitals';
 import 'tachyons';
 
@@ -22,6 +23,7 @@ root.render(
           <Route path="Login" element={<Login />} />
           <Route path="Signup" element={<Signup />} />
           <Route path="LandlordLogin" element={<LandlordLogin />} />
+          <Route path="LandlordSignup" element={<LandlordSignup/>} />
         </Route>
       </Routes>
     </BrowserRouter>
