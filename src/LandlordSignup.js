@@ -1,5 +1,20 @@
 import React from "react";
 
+const ClearOutput = () => {
+    const Name = document.getElementById('name');
+    const Phone = document.getElementById('phone-number');
+    const Email = document.getElementById('email-address');
+    const Password = document.getElementById('password');
+
+    if (!(Email === "") || !(Password === "") || !(Name === "") || !(Password === "")) {
+        Name.value = "";
+        Phone.value = "";
+        Email.value = "";
+        Password.value = "";
+    }
+
+};
+
 const LandlordSignup = () => {
     return (
         <>
@@ -8,12 +23,12 @@ const LandlordSignup = () => {
                     <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
                         <legend className="tc f1 fw6 ph0 mh0">Landlord Sign Up</legend>
                         <div className="mt3">
-                            <label className="db fw4 lh-copy f6" for="email-address">Name</label>
-                            <input className="pa2 input-reset ba bg-transparent w-100 measure" type="email" name="email-address" id="email-address" />
+                            <label className="db fw4 lh-copy f6" for="name">Name</label>
+                            <input className="pa2 input-reset ba bg-transparent w-100 measure" type="text" name="name" id="name" />
                         </div>
                         <div className="mt3">
-                            <label className="db fw4 lh-copy f6" for="password">Phone Number</label>
-                            <input className="b pa2 input-reset ba bg-transparent" type="password" name="password" id="password" />
+                            <label className="db fw4 lh-copy f6" for="phone-number">Phone Number</label>
+                            <input className="b pa2 input-reset ba bg-transparent" type="tel" name="phone-number" id="phone-number" />
                         </div>
                         <div className="mt3">
                             <label className="db fw4 lh-copy f6" for="email-address">Email address</label>
@@ -26,7 +41,7 @@ const LandlordSignup = () => {
                     </fieldset>
                     <div className="mt3">
                         <input className="f6 grow no-underline br-pill ba bw1 ph3 pv2 mb2 dib dark-blue" type="submit" value="Sign Up" />
-                        <input className="f6 grow no-underline br-pill ba bw1 ph3 pv2 mb2 dib dark-blue" type="reset" value="Clear" />
+                        <input className="f6 grow no-underline br-pill ba bw1 ph3 pv2 mb2 dib dark-blue" type="reset" value="Clear" onClick={ClearOutput} />
                     </div>
                 </form>
             </article>

@@ -1,5 +1,15 @@
 import React from "react";
 
+const ClearOutput = () => {
+    const Email = document.getElementById('email-address');
+    const Password = document.getElementById('password');
+
+    if (!(Email === "") || !(Password === "")) {
+        Email.value = "";
+        Password.value = "";
+    }
+
+};
 
 const WardenLogin = () => {
     return (
@@ -19,7 +29,7 @@ const WardenLogin = () => {
                     </fieldset>
                     <div className="">
                         <input className="f6 grow no-underline br-pill ba bw1 ph3 pv2 mb2 dib dark-blue" type="submit" value="Log In" />
-                        <input className="f6 grow no-underline br-pill ba bw1 ph3 pv2 mb2 dib dark-blue" type="reset" value="Clear" />
+                        <input className="f6 grow no-underline br-pill ba bw1 ph3 pv2 mb2 dib dark-blue" type="reset" value="Clear" onClick={ClearOutput} />
                     </div>
                     <div className="lh-copy mt3">
                         <a href="#0" className="f6 link dim black db">Forgot your password?</a>
