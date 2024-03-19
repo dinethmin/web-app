@@ -1,7 +1,6 @@
 import React from "react";
 
-
-const Card = () => {
+const LandlordLogin = () => {
     return (
         <div>
             <main className="pa6 black-80">
@@ -35,6 +34,7 @@ const Card = () => {
 
         </div>
     );
+
 }
 
-export default Card;
+export default LandlordLogin;

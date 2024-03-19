@@ -4,7 +4,7 @@ const HomeLayout = () => {
     return (
         <>
             <article class="vh-100 dt w-100 ph5-ns tc br5 pv7 bg-washed-green dark-green">
-                <h1 class="fw6 f3 f2-ns lh-title tc white ph3">
+                <h1 class="fw6 f3 f2-ns lh-title tc black ph3">
                     This is a tagline. For x.
                 </h1>
                 <h2 class="fw2 f4 lh-copy ">
