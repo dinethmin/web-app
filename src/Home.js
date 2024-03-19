@@ -16,7 +16,7 @@ const Home = () => {
                             <Link to="/LandlordSignup">Signup</Link>
                         </div>
                     </div>
-                    <Link className="link dim f4-ns blue dib mr3" to="/App" title="App">App</Link>
+                    <Link className="link dim f4-ns blue dib mr3" to="/WardenLogin" title="WardenLogin">Warden</Link>
                 </nav>
             </header>
             <Outlet />

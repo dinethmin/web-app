@@ -1,6 +1,6 @@
 import React from "react";
 
-const Signup = () => {
+const LandlordSignup = () => {
     return (
         <>
             <article className="pa6 black-80 vh-100 w-100">
@@ -39,4 +39,4 @@ const Signup = () => {
 
 }
 
-export default Signup;
+export default LandlordSignup;
