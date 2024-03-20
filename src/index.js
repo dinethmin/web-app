@@ -6,6 +6,7 @@ import Home from './Home';
 import HomeLayout from './HomeLayout';
 import Login from './Login';
 import Signup from './Signup';
+import AdminLogin from './AdminLogin';
 import LandlordLogin from './LandlordLogin';
 import LandlordSignup from './LandlordSignup';
 import WardenLogin from './WardenLogin';
@@ -25,6 +26,7 @@ root.render(
           <Route path="LandlordLogin" element={<LandlordLogin />} />
           <Route path="LandlordSignup" element={<LandlordSignup />} />
           <Route path="WardenLogin" element={<WardenLogin />} />
+          <Route path="AdminLogin" element={<AdminLogin />} />
         </Route>
       </Routes>
     </BrowserRouter>
