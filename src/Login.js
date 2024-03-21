@@ -10,11 +10,16 @@ const ClearOutput = () => {
         Password.value = "";
     }
 
+
+};
+
+const LoginBtn = () => {
+
 };
 
 const Login = () => {
     return (
-        <div>
+        <>
             <main className="pa6 black-80 vh-100 w-100">
                 <form className="measure center">
                     <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
@@ -29,7 +34,7 @@ const Login = () => {
                         </div>
                     </fieldset>
                     <div className="">
-                        <input className="f6 grow no-underline br-pill ba bw1 ph3 pv2 mb2 dib dark-blue" type="submit" value="Log In" />
+                        <input className="f6 grow no-underline br-pill ba bw1 ph3 pv2 mb2 dib dark-blue" type="submit" value="Log In" onClick={LoginBtn} />
                         <input className="f6 grow no-underline br-pill ba bw1 ph3 pv2 mb2 dib dark-blue" type="reset" value="Clear" onClick={ClearOutput} />
                     </div>
                     <div className="lh-copy mt3">
@@ -42,7 +47,10 @@ const Login = () => {
                 <small class="f6 db tc">©<b class="ttu">Created by Group CB</b>., All Rights Reserved</small>
             </footer>
 
-        </div>
+
+
+        </>
+
     );
 
 }
