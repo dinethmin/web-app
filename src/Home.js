@@ -19,6 +19,7 @@ const Home = () => {
                         </div>
                     </div>
                     <Link className="link dim f4-ns blue dib mr3" to="/WardenLogin" title="WardenLogin">Warden</Link>
+                    <Link className="link dim f4-ns blue dib mr3" to="/AdminLogin" title="AdminLogin">Admin</Link>
                 </nav>
             </header>
             <Outlet />
