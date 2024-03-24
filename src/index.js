@@ -11,6 +11,8 @@ import LandlordLogin from './LandlordLogin';
 import LandlordSignup from './LandlordSignup';
 import WardenLogin from './WardenLogin';
 import Dashbord from './Student/Dashbord';
+import Profile from './Student/Profile';
+import Reservations from './Student/Reservations';
 import reportWebVitals from './reportWebVitals';
 import 'tachyons';
 
@@ -30,6 +32,8 @@ root.render(
           <Route path="AdminLogin" element={<AdminLogin />} />
         </Route>
         <Route path="Dashbord" element={<Dashbord/>}></Route>
+        <Route path="Profile" element={<Profile/>}></Route>
+        <Route path="Reservations" element={<Reservations/>}></Route>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
