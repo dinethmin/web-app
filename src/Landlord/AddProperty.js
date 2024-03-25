@@ -17,29 +17,33 @@ const Hide = () => {
     }
 };
 
-const ClearOutput = () => {
-    const Name = document.getElementById('Property_Name');
-    const Phone = document.getElementById('Phone_No');
-    const Description = document.getElementById('Description');
-    const Facilities = document.getElementById('Available_Facilities');
-    const Available_For = document.getElementById('Available_For');
-    const Price = document.getElementById('Price');
-    const Photos = document.getElementById('Photos');
-
-    if (!(Description === "") || !(Facilities === "") || !(Name === "") || !(Available_For === "") || !(Price === "") || !(Photos === "") || !(Marker === "")) {
-        Name.value = "";
-        Phone.value = "";
-        Description.value = "";
-        Facilities.value = "";
-        Available_For.value = "";
-        Price.value = "";
-    }
-};
-
 const AddProperty = () => {
     const [markers, setMarkers] = useState([]);
-    const position = { lat: 6.8214925581511565, lng: 80.04122509763354 };
     const [height, setHeight] = useState(0); // Height state
+    const position = { lat: 6.8214925581511565, lng: 80.04122509763354 };
+
+    const ClearOutput = () => {
+        const Name = document.getElementById('Property_Name');
+        const Phone = document.getElementById('Phone_No');
+        const Description = document.getElementById('Description');
+        const Facilities = document.getElementById('Available_Facilities');
+        const Available_For = document.getElementById('Available_For');
+        const Price = document.getElementById('Price');
+        const Address = document.getElementById('Address');
+        const Photos = document.getElementById('Photos');
+
+        if (!(Description === "") || !(Facilities === "") || !(Name === "") || !(Available_For === "") || !(Price === "") || !(Address === "") || !(Photos === null)) {
+            Name.value = "";
+            Phone.value = "";
+            Description.value = "";
+            Facilities.value = "";
+            Available_For.value = "";
+            Price.value = "";
+            Address.value = "";
+            Photos.value = null;
+        }
+        setMarkers([]);
+    };
 
     useEffect(() => {
         // Accessing column_two.offsetHeight after the component has been rendered
@@ -64,6 +68,8 @@ const AddProperty = () => {
         }
     };
 
+
+
     return (
         <APIProvider apiKey={"AIzaSyDnk8killPj2EO1k_H9V1ocew2crxglWbM"}>
             <>
@@ -84,6 +90,7 @@ const AddProperty = () => {
                         </div>
                     </div>
                     <div className="fl w-80 bg-light-gray" id="column_two" onLoad={useEffect} style={{ flexGrow: 1 }}>
+
                         <div>
                             <button className="f6 br2 ph3 pv2 mb2 dib black bg-light-gray" id="HideBtn" onClick={Hide}>Hide Blocks</button>
                             <h1 className="ma0 ml4 center tc">Add New Property</h1>
@@ -99,6 +106,10 @@ const AddProperty = () => {
                                         <div className="mt3">
                                             <label className="db fw4 lh-copy f6" htmlFor="Description">Description</label>
                                             <input className="pa2 input-reset ba bg-transparent w-90" type="text" name="Description" id="Description" />
+                                        </div>
+                                        <div className="mt3">
+                                            <label className="db fw4 lh-copy f6" htmlFor="Address">Address</label>
+                                            <input className="pa2 input-reset ba bg-transparent w-90" type="text" name="Address" id="Address" />
                                         </div>
                                         <div className="mt3 fn fl-ns w-50-ns">
                                             <label className="db fw4 lh-copy f6" htmlFor="Available_Facilities">Available Facilities</label>
@@ -128,7 +139,7 @@ const AddProperty = () => {
 
                                     <article className="m-100 mt3 ml2 mr2 bg-light-gray br3 ba b--black-10">
                                         <div className="tc">
-                                            <label className="db fw4 lh-copy f6" htmlFor="Enter_Location">Enter Location</label>
+                                            <h4 className="db fw4 lh-copy f6 ma0" htmlFor="Enter_Location">Enter Location</h4>
                                             <div className="m-100 vh-50">
                                                 <Map defaultCenter={position} defaultZoom={15} onClick={handleMapClick}>
                                                     {markers.map((marker, index) => (

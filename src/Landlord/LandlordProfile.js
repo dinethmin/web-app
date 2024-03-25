@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const Hide = () => {
@@ -32,6 +32,16 @@ const ClearOutput = () => {
 };
 
 const LandlordProfile = () => {
+    const [height, setHeight] = useState(0); // Height state
+
+    useEffect(() => {
+        // Accessing column_two.offsetHeight after the component has been rendered
+        const column2 = document.getElementById('column_two');
+        if (column2) {
+            setHeight(column2.offsetHeight);
+        }
+    }, []);
+
     return (
         <>
             <nav className="db dt-l w-100 tr border-box ph5-l bg-dark-blue">
@@ -41,16 +51,19 @@ const LandlordProfile = () => {
                 </button>
             </nav>
 
-            <article className="cf">
-                <div className="fl w-20 bg-navy vh-100 tc" id="column_one">
+            <article style={{ display: 'flex' }}>
+
+                <div className="fl w-20 bg-navy" id="column_one" style={{ flexShrink: 0, height: height }}>
                     <div>
                         <Link className="link f6 f3-ns fw6 tc mt4 db white no-underline underline-hover" to="/LandlordDashbord" title="LandlordDashbord">Dashbord</Link>
                         <Link className="link f6 f3-ns fw6 tc mt4 db white no-underline underline-hover" to="/LandlordProfile" title="LandlordProfile">Profile</Link>
-                        <Link className="link f6 f3-ns fw6 tc mt4 db white no-underline underline-hover" to="/AddProperty" title="AddProperty">AddProperty</Link>
+                        <Link className="link f6 f3-ns fw6 tc mt4 db white no-underline underline-hover" to="/AddProperty" title="AddProperty">Property</Link>
                         <a className="f6 f3-ns fw6 tc mt4 db white no-underline underline-hover" href="#0">Log Out</a>
                     </div>
                 </div>
-                <div className="fl w-80 bg-light-gray vh-100" id="column_two">
+
+                <div className="fl w-80 bg-light-gray vh-100" id="column_two" onLoad={useEffect} style={{ flexGrow: 1 }}>
+
                     <div>
                         <button className="f6 br2 ph3 pv2 mb2 dib black bg-light-gray" id="HideBtn" onClick={Hide}>Hide Blocks</button>
                     </div>
