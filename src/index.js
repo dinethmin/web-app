@@ -13,6 +13,9 @@ import WardenLogin from './WardenLogin';
 import Dashbord from './Student/Dashbord';
 import Profile from './Student/Profile';
 import Reservations from './Student/Reservations';
+import LandlordDashbord from './Landlord/LandlordDashbord';
+import LandlordProfile from './Landlord/LandlordProfile';
+import AddProperty from './Landlord/AddProperty';
 import reportWebVitals from './reportWebVitals';
 import 'tachyons';
 
@@ -34,6 +37,9 @@ root.render(
         <Route path="Dashbord" element={<Dashbord/>}></Route>
         <Route path="Profile" element={<Profile/>}></Route>
         <Route path="Reservations" element={<Reservations/>}></Route>
+        <Route path="LandlordDashbord" element={<LandlordDashbord/>}></Route>
+        <Route path="LandlordProfile" element={<LandlordProfile/>}></Route>
+        <Route path="AddProperty" element={<AddProperty/>}></Route>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
