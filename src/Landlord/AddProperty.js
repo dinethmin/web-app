@@ -52,33 +52,45 @@ const AddProperty = () => {
                 </div>
                 <div className="fl w-80 bg-light-gray vh-100" id="column_two">
                     <div>
-                        <button className="f6 br2 ph3 pv2 mb2 dib black bg-light-gray" id="HideBtn" onClick={Hide}>Hide Blocks</button>
+                        <button className="f6 fn fl-ns br2 ph3 pv2 mb2 dib black bg-light-gray" id="HideBtn" onClick={Hide}>Hide Blocks</button>
+                        <h1 className="fn fl-ns mt0 ml5">Add New Property</h1>
                     </div>
                     <div>
-                        <article className=" black-80 w-100">
-                            <form className="measure" action="sign-up_submit" method="post" acceptCharset="utf-8">
-                                <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
-
+                        <article className=" black-80 w-100 tc">
+                            <form>
+                                <fieldset id="sign_up" className="ba2 b--transparent ph0 mh0 w-100 pa2 pr2">
                                     <div className="mt3">
-                                        <label className="db fw4 lh-copy f6" htmlFor="name">Name</label>
-                                        <input className="pa2 input-reset ba bg-transparent w-100 measure" type="text" name="name" id="name" />
+                                        <label className="db fw4 lh-copy f6" htmlFor="Property_Name">Property Name</label>
+                                        <input className="pa2 input-reset ba bg-transparent w-90" type="text" name="Property_Name" id="Property_Name" />
                                     </div>
                                     <div className="mt3">
-                                        <label className="db fw4 lh-copy f6" htmlFor="phone-number">Phone Number</label>
-                                        <input className="b pa2 input-reset ba bg-transparent" type="tel" name="phone-number" id="phone-number" />
+                                        <label className="db fw4 lh-copy f6" htmlFor="Description">Description</label>
+                                        <input className="pa2 input-reset ba bg-transparent w-90" type="text" name="Description" id="Description" />
                                     </div>
-                                    <div className="mt3">
-                                        <label className="db fw4 lh-copy f6" htmlFor="email-address">Email address</label>
-                                        <input className="pa2 input-reset ba bg-transparent w-100 measure" type="email" name="email-address" id="email-address" />
+                                    <div className="mt3 fn fl-ns w-50-ns">
+                                        <label className="db fw4 lh-copy f6" htmlFor="Available_Facilities">Available Facilities</label>
+                                        <input className="pa2 input-reset ba bg-transparent w-80" type="text" name="Available_Facilities" id="Available_Facilities" />
                                     </div>
-                                    <div className="mt3">
-                                        <label className="db fw4 lh-copy f6" htmlFor="password">Password</label>
-                                        <input className="b pa2 input-reset ba bg-transparent" type="password" name="password" id="password" />
+                                    <div className="mt3 fn fl-ns w-50-ns">
+                                        <label className="db fw4 lh-copy f6" htmlFor="Phone_No">Phone No</label>
+                                        <input className="pa2 input-reset ba bg-transparent w-80" type="tel" name="Phone_No" id="Phone_No" />
+                                    </div>
+                                    <div className="mt3 fn fl-ns w-50-ns">
+                                        <label className="db fw4 lh-copy f6" htmlFor="Available_For">Available For</label>
+                                        <select className="pa2 input-reset ba bg-transparent w-80" id="Available_For" name="Available_For">
+                                            <option value="Male">Male</option>
+                                            <option value="Female">Female</option>
+                                            <option value="Both">Both</option>
+                                        </select>
+                                    </div>
+                                    <div className="mt3 fn fl-ns w-50-ns">
+                                        <label className="db fw4 lh-copy f6" htmlFor="Price">Price</label>
+                                        <input className="pa2 input-reset ba bg-transparent w-80" type="number" name="Price" id="Price" />
                                     </div>
                                 </fieldset>
-                                <div className="mt4">
-                                    <input className="f6 grow no-underline br-pill ba bw1 ph3 pv2 mb2 dib dark-blue" type="submit" value="Edit" />
-                                    <input className="f6 ml3 grow no-underline br-pill ba bw1 ph3 pv2 mb2 dib dark-blue" type="reset" value="Clear" onClick={ClearOutput} />
+                                <div className="tc">
+                                    <input className="f6 link dim br3 ph3 pv2 mb2 dib white bg-dark-blue w4" type="submit" value="Add" />
+                                    <input className="f6 ml4 link dim br3 ph3 pv2 mb2 dib white bg-dark-blue w4" type="reset" value="Clear" onClick={ClearOutput} />
                                 </div>
                             </form>
                         </article>
