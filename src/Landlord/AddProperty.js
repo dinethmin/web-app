@@ -56,7 +56,7 @@ const AddProperty = () => {
                         <h1 className="fn fl-ns mt0 ml5">Add New Property</h1>
                     </div>
                     <div>
-                        <article className=" black-80 w-100 tc">
+                        <article className="black-80 w-100 tc">
                             <form>
                                 <fieldset id="sign_up" className="ba2 b--transparent ph0 mh0 w-100 pa2 pr2">
                                     <div className="mt3">
@@ -88,7 +88,7 @@ const AddProperty = () => {
                                         <input className="pa2 input-reset ba bg-transparent w-80" type="number" name="Price" id="Price" />
                                     </div>
                                 </fieldset>
-                                <div className="tc">
+                                <div className="mt3">
                                     <input className="f6 link dim br3 ph3 pv2 mb2 dib white bg-dark-blue w4" type="submit" value="Add" />
                                     <input className="f6 ml4 link dim br3 ph3 pv2 mb2 dib white bg-dark-blue w4" type="reset" value="Clear" onClick={ClearOutput} />
                                 </div>

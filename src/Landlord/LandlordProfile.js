@@ -55,30 +55,29 @@ const LandlordProfile = () => {
                         <button className="f6 br2 ph3 pv2 mb2 dib black bg-light-gray" id="HideBtn" onClick={Hide}>Hide Blocks</button>
                     </div>
                     <div>
-                        <article className=" black-80 w-100">
-                            <form className="measure center" action="sign-up_submit" method="post" acceptCharset="utf-8">
-                                <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
-
+                        <article className="black-80 w-100 tc">
+                            <form>
+                                <fieldset id="sign_up" className="ba2 b--transparent ph0 mh0 w-100 pa2 pr2">
                                     <div className="mt3">
                                         <label className="db fw4 lh-copy f6" htmlFor="name">Name</label>
-                                        <input className="pa2 input-reset ba bg-transparent w-100 measure" type="text" name="name" id="name" />
-                                    </div>
-                                    <div className="mt3">
-                                        <label className="db fw4 lh-copy f6" htmlFor="phone-number">Phone Number</label>
-                                        <input className="b pa2 input-reset ba bg-transparent" type="tel" name="phone-number" id="phone-number" />
+                                        <input className="pa2 input-reset ba bg-transparent w-90" type="text" name="name" id="name" />
                                     </div>
                                     <div className="mt3">
                                         <label className="db fw4 lh-copy f6" htmlFor="email-address">Email address</label>
-                                        <input className="pa2 input-reset ba bg-transparent w-100 measure" type="email" name="email-address" id="email-address" />
+                                        <input className="pa2 input-reset ba bg-transparent w-90" type="email" name="email-address" id="email-address" />
                                     </div>
-                                    <div className="mt3">
+                                    <div className="mt3 fn fl-ns w-50-ns">
                                         <label className="db fw4 lh-copy f6" htmlFor="password">Password</label>
-                                        <input className="b pa2 input-reset ba bg-transparent" type="password" name="password" id="password" />
+                                        <input className="pa2 input-reset ba bg-transparent w-80" type="password" name="password" id="password" />
+                                    </div>
+                                    <div className="mt3 fn fl-ns w-50-ns">
+                                        <label className="db fw4 lh-copy f6" htmlFor="phone-number">Phone Number</label>
+                                        <input className="pa2 input-reset ba bg-transparent w-80" type="tel" name="phone-number" id="phone-number" />
                                     </div>
                                 </fieldset>
-                                <div className="mt4">
-                                    <input className="f6 grow no-underline br-pill ba bw1 ph3 pv2 mb2 dib dark-blue" type="submit" value="Edit" />
-                                    <input className="f6 ml3 grow no-underline br-pill ba bw1 ph3 pv2 mb2 dib dark-blue" type="reset" value="Clear" onClick={ClearOutput} />
+                                <div className="mt3">
+                                    <input className="f6 link dim br3 ph3 pv2 mb2 dib white bg-dark-blue w4" type="submit" value="Edit" />
+                                    <input className="f6 link ml5 dim br3 ph3 pv2 mb2 dib white bg-dark-blue w4" type="reset" value="Clear" onClick={ClearOutput} />
                                 </div>
                             </form>
                         </article>
