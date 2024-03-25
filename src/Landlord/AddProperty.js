@@ -16,6 +16,20 @@ const Hide = () => {
     }
 };
 
+const ClearOutput = () => {
+    const Name = document.getElementById('name');
+    const Phone = document.getElementById('phone-number');
+    const Email = document.getElementById('email-address');
+    const Password = document.getElementById('password');
+
+    if (!(Email === "") || !(Password === "") || !(Name === "") || !(Password === "")) {
+        Name.value = "";
+        Phone.value = "";
+        Email.value = "";
+        Password.value = "";
+    }
+};
+
 const AddProperty = () => {
     return (
 
@@ -39,6 +53,35 @@ const AddProperty = () => {
                 <div className="fl w-80 bg-light-gray vh-100" id="column_two">
                     <div>
                         <button className="f6 br2 ph3 pv2 mb2 dib black bg-light-gray" id="HideBtn" onClick={Hide}>Hide Blocks</button>
+                    </div>
+                    <div>
+                        <article className=" black-80 w-100">
+                            <form className="measure" action="sign-up_submit" method="post" acceptCharset="utf-8">
+                                <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
+
+                                    <div className="mt3">
+                                        <label className="db fw4 lh-copy f6" htmlFor="name">Name</label>
+                                        <input className="pa2 input-reset ba bg-transparent w-100 measure" type="text" name="name" id="name" />
+                                    </div>
+                                    <div className="mt3">
+                                        <label className="db fw4 lh-copy f6" htmlFor="phone-number">Phone Number</label>
+                                        <input className="b pa2 input-reset ba bg-transparent" type="tel" name="phone-number" id="phone-number" />
+                                    </div>
+                                    <div className="mt3">
+                                        <label className="db fw4 lh-copy f6" htmlFor="email-address">Email address</label>
+                                        <input className="pa2 input-reset ba bg-transparent w-100 measure" type="email" name="email-address" id="email-address" />
+                                    </div>
+                                    <div className="mt3">
+                                        <label className="db fw4 lh-copy f6" htmlFor="password">Password</label>
+                                        <input className="b pa2 input-reset ba bg-transparent" type="password" name="password" id="password" />
+                                    </div>
+                                </fieldset>
+                                <div className="mt4">
+                                    <input className="f6 grow no-underline br-pill ba bw1 ph3 pv2 mb2 dib dark-blue" type="submit" value="Edit" />
+                                    <input className="f6 ml3 grow no-underline br-pill ba bw1 ph3 pv2 mb2 dib dark-blue" type="reset" value="Clear" onClick={ClearOutput} />
+                                </div>
+                            </form>
+                        </article>
                     </div>
                 </div>
             </article>

@@ -82,7 +82,7 @@ const LandlordDashboard = () => {
                         </article>
                     </div>
                 </article>
-                <footer className="bottom-0 w-100 ph3 ph5-m ph6-l bg-light-gray z-9999">
+                <footer className="fixed bottom-0 w-100 ph3 ph5-m ph6-l bg-light-gray z-9999">
                     <small className="f6 db tc">©<b className="ttu">Created by Group CB</b>., All Rights Reserved</small>
                 </footer>
 
