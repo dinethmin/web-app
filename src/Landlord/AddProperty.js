@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { APIProvider, Map, Marker } from '@vis.gl/react-google-maps';
 import { Link } from "react-router-dom";
 
@@ -18,22 +18,36 @@ const Hide = () => {
 };
 
 const ClearOutput = () => {
-    const Name = document.getElementById('name');
-    const Phone = document.getElementById('phone-number');
-    const Email = document.getElementById('email-address');
-    const Password = document.getElementById('password');
+    const Name = document.getElementById('Property_Name');
+    const Phone = document.getElementById('Phone_No');
+    const Description = document.getElementById('Description');
+    const Facilities = document.getElementById('Available_Facilities');
+    const Available_For = document.getElementById('Available_For');
+    const Price = document.getElementById('Price');
+    const Photos = document.getElementById('Photos');
 
-    if (!(Email === "") || !(Password === "") || !(Name === "") || !(Password === "")) {
+    if (!(Description === "") || !(Facilities === "") || !(Name === "") || !(Available_For === "") || !(Price === "") || !(Photos === "") || !(Marker === "")) {
         Name.value = "";
         Phone.value = "";
-        Email.value = "";
-        Password.value = "";
+        Description.value = "";
+        Facilities.value = "";
+        Available_For.value = "";
+        Price.value = "";
     }
 };
 
 const AddProperty = () => {
     const [markers, setMarkers] = useState([]);
     const position = { lat: 6.8214925581511565, lng: 80.04122509763354 };
+    const [height, setHeight] = useState(0); // Height state
+
+    useEffect(() => {
+        // Accessing column_two.offsetHeight after the component has been rendered
+        const column2 = document.getElementById('column_two');
+        if (column2) {
+            setHeight(column2.offsetHeight);
+        }
+    }, []);
 
     const handleMapClick = (event) => {
         console.log("Clicked event:", event); // Debugging statement
@@ -60,16 +74,16 @@ const AddProperty = () => {
                     </button>
                 </nav>
 
-                <article className="cf">
-                    <div className="fl w-20 bg-navy vh-100 tc" id="column_one">
+                <article style={{ display: 'flex' }}>
+                    <div className="fl w-20 bg-navy" id="column_one" style={{ flexShrink: 0, height: height }}>
                         <div>
                             <Link className="link f6 f3-ns fw6 tc mt4 db white no-underline underline-hover" to="/LandlordDashbord" title="LandlordDashbord">Dashbord</Link>
                             <Link className="link f6 f3-ns fw6 tc mt4 db white no-underline underline-hover" to="/LandlordProfile" title="LandlordProfile">Profile</Link>
-                            <Link className="link f6 f3-ns fw6 tc mt4 db white no-underline underline-hover" to="/AddProperty" title="AddProperty">AddProperty</Link>
+                            <Link className="link f6 f3-ns fw6 tc mt4 db white no-underline underline-hover" to="/AddProperty" title="AddProperty">Property</Link>
                             <a className="f6 f3-ns fw6 tc mt4 db white no-underline underline-hover" href="#0">Log Out</a>
                         </div>
                     </div>
-                    <div className="fl w-80 bg-light-gray vh-100" id="column_two">
+                    <div className="fl w-80 bg-light-gray" id="column_two" onLoad={useEffect} style={{ flexGrow: 1 }}>
                         <div>
                             <button className="f6 br2 ph3 pv2 mb2 dib black bg-light-gray" id="HideBtn" onClick={Hide}>Hide Blocks</button>
                             <h1 className="ma0 ml4 center tc">Add New Property</h1>
