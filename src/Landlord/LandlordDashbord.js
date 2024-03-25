@@ -1,42 +1,34 @@
-import React, { useState } from "react";
-import { APIProvider, Map, Marker } from '@vis.gl/react-google-maps';
+import React, { useState, useEffect } from "react";
+import { APIProvider, Map } from '@vis.gl/react-google-maps';
 import { Link } from "react-router-dom";
 
-const Hide = () => {
-    const column1 = document.getElementById("column_one");
-    const column2 = document.getElementById("column_two");
-    const btn = document.getElementById("HideBtn")
-    if (btn.innerHTML === "Hide Blocks") {
-        column1.style.display = 'none';
-        column2.style.width = '100%';
-        btn.innerHTML = "Show Blocks";
-    } else if (btn.innerHTML === "Show Blocks") {
-        column1.style.display = 'inline';
-        column2.style.width = '80%';
-        btn.innerHTML = "Hide Blocks";
-    }
-};
+const position = { lat: 6.8214925581511565, lng: 80.04122509763354 };
 
-const LandlordDashboard = () => {
-    const [markers, setMarkers] = useState([]);
-    const position = { lat: 6.8214925581511565, lng: 80.04122509763354 };
+const Dashboard = () => {
+    const [height, setHeight] = useState(0); // Height state
 
-    const handleMapClick = (event) => {
-        console.log("Clicked event:", event); // Debugging statement
+    useEffect(() => {
+        const column2 = document.getElementById('column_two');
+        if (column2) {
+            setHeight(column2.offsetHeight);
+        }
+    }, []);
 
-        if (event && event.detail && event.detail.latLng) {
-            const clickedPosition = {
-                lat: event.detail.latLng.lat,
-                lng: event.detail.latLng.lng
-            };
-            console.log("Clicked position:", clickedPosition); // Debugging statement
-            setMarkers([...markers, clickedPosition]);
+    const handleHideBlocks = () => {
+        const column1 = document.getElementById("column_one");
+        const column2 = document.getElementById("column_two");
+        const btn = document.getElementById("HideBtn");
+
+        if (btn.innerHTML === "Hide Blocks") {
+            column1.style.display = 'none';
+            column2.style.width = '100%';
+            btn.innerHTML = "Show Blocks";
         } else {
-            console.error("Invalid click event:", event); // Debugging statement
+            column1.style.display = 'inline';
+            column2.style.width = '80%';
+            btn.innerHTML = "Hide Blocks";
         }
     };
-
-
 
     return (
         <APIProvider apiKey={"AIzaSyDnk8killPj2EO1k_H9V1ocew2crxglWbM"}>
@@ -48,8 +40,9 @@ const LandlordDashboard = () => {
                     </button>
                 </nav>
 
-                <article className="cf vh-100">
-                    <div className="fl w-20 bg-navy vh-100 tc" id="column_one">
+                <article style={{ display: 'flex' }}>
+
+                    <div className="fl w-20 bg-navy" id="column_one" style={{ flexShrink: 0, height: height }}>
                         <div>
                             <Link className="link f6 f3-ns fw6 tc mt4 db white no-underline underline-hover" to="/LandlordDashbord" title="LandlordDashbord">Dashbord</Link>
                             <Link className="link f6 f3-ns fw6 tc mt4 db white no-underline underline-hover" to="/LandlordProfile" title="LandlordProfile">Profile</Link>
@@ -57,10 +50,12 @@ const LandlordDashboard = () => {
                             <a className="f6 f3-ns fw6 tc mt4 db white no-underline underline-hover" href="#0">Log Out</a>
                         </div>
                     </div>
-                    <div className="fl w-80 bg-light-gray vh-100" id="column_two">
+
+                    <div className="fl w-80 bg-light-gray vh-100" id="column_two" style={{ flexGrow: 1 }}>
                         <div>
-                            <button className="f6 br2 ph3 pv2 mb2 dib black bg-light-gray" id="HideBtn" onClick={Hide}>Hide Blocks</button>
+                            <button className="f6 br2 ph3 pv2 mb2 dib black bg-light-gray" id="HideBtn" onClick={handleHideBlocks}>Hide Blocks</button>
                         </div>
+
                         <article className="m-100 ml2 mr2 bg-light-gray br3 ba b--black-10">
                             <div className="tc">
                                 <img src="https://students.nsbm.ac.lk/img/1nsbm.png" className="h3 w7 dib ba b--black-05 pa2" alt="kitty staring at you" />
@@ -68,21 +63,21 @@ const LandlordDashboard = () => {
                                 <h2 className="f5 fw4 gray mt0">To NSBM Accommodation Rental Service</h2>
                             </div>
                         </article>
+
                         <article className="m-100 mt3 ml2 mr2 bg-light-gray br3 ba b--black-10">
                             <div className="tc">
                                 <h1 className="mt0">Accommodations</h1>
                                 <div className="m-100 vh-50">
-                                    <Map defaultCenter={position} defaultZoom={12} onClick={handleMapClick}>
-                                        {markers.map((marker, index) => (
-                                            <Marker key={index} position={marker} />
-                                        ))}
+                                    <Map defaultCenter={position} defaultZoom={12}>
                                     </Map>
                                 </div>
                             </div>
                         </article>
+
                     </div>
                 </article>
-                <footer className="fixed bottom-0 w-100 ph3 ph5-m ph6-l bg-light-gray z-9999">
+
+                <footer className="bottom-0 w-100 ph3 ph5-m ph6-l bg-light-gray z-9999">
                     <small className="f6 db tc">©<b className="ttu">Created by Group CB</b>., All Rights Reserved</small>
                 </footer>
 
@@ -91,4 +86,4 @@ const LandlordDashboard = () => {
     );
 }
 
-export default LandlordDashboard;
+export default Dashboard;
