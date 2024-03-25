@@ -16,23 +16,23 @@ const Hide = () => {
     }
 };
 
-const Reservations = () => {
+const AddProperty = () => {
     return (
 
         <>
             <nav className="db dt-l w-100 tr border-box ph5-l bg-dark-blue">
                 <button className=" dtc-l v-mid black dim b--none bg-transparent tl-l" title="Home">
                     <img src="https://www.wikipedia.org/portal/wikipedia.org/assets/img/Wikipedia-logo-v2.png" className="br-100 ba h2 w2 dib v-mid" alt="Student logo" />
-                    student@gmail.com
+                    Landlord@gmail.com
                 </button>
             </nav>
 
             <article className="cf">
                 <div className="fl w-20 bg-navy vh-100 tc" id="column_one">
                     <div>
-                        <Link className="link f6 f3-ns fw6 tc mt4 db white no-underline underline-hover" to="/Dashbord" title="Dashbord">Dashbord</Link>
-                        <Link className="link f6 f3-ns fw6 tc mt4 db white no-underline underline-hover" to="/Profile" title="Profile">Profile</Link>
-                        <Link className="link f6 f3-ns fw6 tc mt4 db white no-underline underline-hover" to="/Reservations" title="Reservations">Reservations</Link>
+                        <Link className="link f6 f3-ns fw6 tc mt4 db white no-underline underline-hover" to="/LandlordDashbord" title="LandlordDashbord">Dashbord</Link>
+                        <Link className="link f6 f3-ns fw6 tc mt4 db white no-underline underline-hover" to="/LandlordProfile" title="LandlordProfile">Profile</Link>
+                        <Link className="link f6 f3-ns fw6 tc mt4 db white no-underline underline-hover" to="/AddProperty" title="AddProperty">AddProperty</Link>
                         <a className="f6 f3-ns fw6 tc mt4 db white no-underline underline-hover" href="#0">Log Out</a>
                     </div>
                 </div>
@@ -51,4 +51,4 @@ const Reservations = () => {
     );
 }
 
-export default Reservations;
+export default AddProperty;
