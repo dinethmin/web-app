@@ -55,7 +55,7 @@ const WardenProperty = () => {
                         <Link className="link dim white dib mr3" to="/WardenDashbord" title="WardenDashbord">Dashbord</Link>
                         <Link className="link dim white dib mr3" to="/WardenProfile" title="WardenProfile">Profile</Link>
                         <Link className="link dim white dib mr3" to="/WardenProperty" title="WardenProperty">Property</Link>
-                        <a className="link dim white dib mr2" href="#0">LogOut</a>
+                        <a className="link dim white dib mr2" href="#0">Logout</a>
                     </div>
                     <button className="dtc-l v-mid black dim b--none bg-transparent tl-l" title="Home">
                         <img src="https://www.wikipedia.org/portal/wikipedia.org/assets/img/Wikipedia-logo-v2.png" className="br-100 ba h1 w1 h2-ns w2-ns dib v-mid" alt="Student logo" />

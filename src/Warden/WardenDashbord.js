@@ -14,7 +14,7 @@ const WardenDashbord = () => {
                         <Link className="link dim white dib mr3" to="/WardenDashbord" title="WardenDashbord">Dashbord</Link>
                         <Link className="link dim white dib mr3" to="/WardenProfile" title="WardenProfile">Profile</Link>
                         <Link className="link dim white dib mr3" to="/WardenProperty" title="WardenProperty">Property</Link>
-                        <a className="link dim white dib mr2" href="#0">LogOut</a>
+                        <a className="link dim white dib mr2" href="#0">Logout</a>
                     </div>
                     <button className="dtc-l v-mid black dim b--none bg-transparent tl-l" title="Home">
                         <img src="https://www.wikipedia.org/portal/wikipedia.org/assets/img/Wikipedia-logo-v2.png" className="br-100 ba h1 w1 h2-ns w2-ns dib v-mid" alt="Student logo" />
@@ -38,7 +38,7 @@ const WardenDashbord = () => {
 
                         <article className="m-100 mt3 ml2 mr2 bg-light-gray br3 ba b--black-10">
                             <div className="tc">
-                                <h1 className="mt0 f4 f3-m f2-ns">Accommodations</h1>
+                                <h1 className="mt0 f4 f3-m f2-ns ">Accommodations</h1>
                                 <div className="m-100 vh-50">
                                     <Map defaultCenter={position} defaultZoom={12}>
                                     </Map>
