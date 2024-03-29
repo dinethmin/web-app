@@ -17,7 +17,7 @@ const ClearOutput = () => {
 
 };
 
-const LandlordSignup = () => {
+const AddLandlord = () => {
     return (
         <>
             <nav className="db dt-l tr w-100 border-box ph5-l bg-dark-blue">
@@ -81,4 +81,4 @@ const LandlordSignup = () => {
 
 }
 
-export default LandlordSignup;
+export default AddLandlord;

@@ -17,7 +17,7 @@ const ClearOutput = () => {
 
 };
 
-const Signup = () => {
+const AddStudent = () => {
     return (
         <>
             <nav className="db dt-l tr w-100 border-box ph5-l bg-dark-blue">
@@ -81,4 +81,4 @@ const Signup = () => {
 
 }
 
-export default Signup;
+export default AddStudent;
