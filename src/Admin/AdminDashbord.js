@@ -17,9 +17,9 @@ const AdminDashbord = () => {
                         <div className="dropdown1 link white dib mr3">
                             <label className="dropbtn1">Create Account</label>
                             <div className="dropdown-content1">
-                                <Link to="/LandlordLogin">Landlord</Link>
-                                <Link to="/LandlordSignup">Warden</Link>
-                                <Link to="/LandlordSignup">Student</Link>
+                                <Link to="/AddLandlord">Landlord</Link>
+                                <Link to="/AddWarden">Warden</Link>
+                                <Link to="/AddStudent">Student</Link>
                             </div>
                         </div>
                         <a className="link dim white dib mr2" href="#0">Logout</a>

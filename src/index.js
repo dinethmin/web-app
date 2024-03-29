@@ -21,6 +21,9 @@ import WardenProperty from './Warden/Property';
 import WardenProfile from './Warden/Profile';
 import AdminDashbord from './Admin/AdminDashbord';
 import AdminProfile from './Admin/AdminProfile';
+import AddStudent from './Admin/AddStudent';
+import AddLandlord from './Admin/AddLandlord';
+import AddWarden from './Admin/AddWarden';
 import reportWebVitals from './reportWebVitals';
 import 'tachyons';
 
@@ -50,6 +53,9 @@ root.render(
         <Route path="WardenProfile" element={<WardenProfile/>}></Route>
         <Route path="AdminDashbord" element={<AdminDashbord/>}></Route>
         <Route path="AdminProfile" element={<AdminProfile/>}></Route>
+        <Route path="AddStudent" element={<AddStudent/>}></Route>
+        <Route path="AddLandlord" element={<AddLandlord/>}></Route>
+        <Route path="AddWarden" element={<AddWarden/>}></Route>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
