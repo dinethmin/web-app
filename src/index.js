@@ -24,6 +24,7 @@ import AdminProfile from './Admin/AdminProfile';
 import AddStudent from './Admin/AddStudent';
 import AddLandlord from './Admin/AddLandlord';
 import AddWarden from './Admin/AddWarden';
+import PostArticles from './Admin/PostArticles';
 import reportWebVitals from './reportWebVitals';
 import 'tachyons';
 
@@ -56,6 +57,7 @@ root.render(
         <Route path="AddStudent" element={<AddStudent/>}></Route>
         <Route path="AddLandlord" element={<AddLandlord/>}></Route>
         <Route path="AddWarden" element={<AddWarden/>}></Route>
+        <Route path="PostArticles" element={<PostArticles/>}></Route>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

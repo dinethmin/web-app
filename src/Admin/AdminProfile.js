@@ -32,6 +32,7 @@ const AdminProfile = () => {
                             <Link to="/AddStudent">Student</Link>
                         </div>
                     </div>
+                    <Link className="link dim white dib mr3" to="/PostArticles" title="PostArticles">Articles</Link>
                     <a className="link dim white dib mr2" href="#0">Logout</a>
                 </div>
                 <button className="dtc-l v-mid black dim b--none bg-transparent tl-l" title="Home">
@@ -44,7 +45,7 @@ const AdminProfile = () => {
 
                 <div className="fl w-0 bg-navy" id="column_one"></div>
 
-                <div className="fl w-100 bg-light-gray vh-100" id="column_two" style={{ flexGrow: 1 }}>
+                <div className="pt4 fl w-100 bg-light-gray vh-100" id="column_two" style={{ flexGrow: 1 }}>
                     <h1 className="tc ttu tracked">Admin Profile</h1>
                     <div>
                         <article className="black-80 w-100 tc">

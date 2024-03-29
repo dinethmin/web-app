@@ -17,7 +17,7 @@ const ClearOutput = () => {
 
 };
 
-const LandlordSignup = () => {
+const AddWarden = () => {
     return (
         <>
             <nav className="db dt-l tr w-100 border-box ph5-l bg-dark-blue">
@@ -32,6 +32,7 @@ const LandlordSignup = () => {
                             <Link to="/AddStudent">Student</Link>
                         </div>
                     </div>
+                    <Link className="link dim white dib mr3" to="/PostArticles" title="PostArticles">Articles</Link>
                     <a className="link dim white dib mr2" href="#0">Logout</a>
                 </div>
                 <button className="dtc-l v-mid black dim b--none bg-transparent tl-l" title="Home">
@@ -40,33 +41,37 @@ const LandlordSignup = () => {
                 </button>
             </nav>
 
-            <article className="pa6 black-80 vh-100 w-100">
-                <form className="measure center">
-                    <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
-                        <legend className="tc f1 fw6 ph0 mh0">Landlord Sign Up</legend>
-                        <div className="mt3">
-                            <label className="db fw4 lh-copy f6" htmlFor="name">Name</label>
-                            <input className="pa2 input-reset ba bg-transparent w-100 measure" type="text" name="name" id="name" />
-                        </div>
-                        <div className="mt3">
-                            <label className="db fw4 lh-copy f6" htmlFor="phone-number">Phone Number</label>
-                            <input className="b pa2 input-reset ba bg-transparent" type="tel" name="phone-number" id="phone-number" />
-                        </div>
-                        <div className="mt3">
-                            <label className="db fw4 lh-copy f6" htmlFor="email-address">Email address</label>
-                            <input className="pa2 input-reset ba bg-transparent w-100 measure" type="email" name="email-address" id="email-address" />
-                        </div>
-                        <div className="mt3">
-                            <label className="db fw4 lh-copy f6" htmlFor="password">Password</label>
-                            <input className="b pa2 input-reset ba bg-transparent" type="password" name="password" id="password" />
-                        </div>
-                    </fieldset>
-                    <div className="mt3">
-                        <input className="f6 grow no-underline br-pill ba bw1 ph3 pv2 mb2 dib dark-blue" type="submit" value="Sign Up" />
-                        <input className="f6 grow no-underline br-pill ba bw1 ph3 pv2 mb2 dib dark-blue" type="reset" value="Clear" onClick={ClearOutput} />
+            <div className="pt4 fl w-100 bg-light-gray vh-100" id="column_two" style={{ flexGrow: 1 }}>
+                    <h1 className="tc ttu tracked">Create Warden Account</h1>
+                    <div>
+                        <article className="black-80 w-100 tc">
+                            <form>
+                                <fieldset id="sign_up" className="ba2 b--transparent ph0 mh0 w-100 pa2 pr2">
+                                    <div className="mt3">
+                                        <label className="db fw4 lh-copy f6" htmlFor="name">Name</label>
+                                        <input className="pa2 input-reset ba bg-transparent w-90" type="text" name="name" id="name" />
+                                    </div>
+                                    <div className="mt3">
+                                        <label className="db fw4 lh-copy f6" htmlFor="email-address">Email address</label>
+                                        <input className="pa2 input-reset ba bg-transparent w-90" type="email" name="email-address" id="email-address" />
+                                    </div>
+                                    <div className="mt3 fn fl-ns w-50-ns">
+                                        <label className="db fw4 lh-copy f6" htmlFor="password">Password</label>
+                                        <input className="pa2 input-reset ba bg-transparent w-80" type="password" name="password" id="password" />
+                                    </div>
+                                    <div className="mt3 fn fl-ns w-50-ns">
+                                        <label className="db fw4 lh-copy f6" htmlFor="phone-number">Phone Number</label>
+                                        <input className="pa2 input-reset ba bg-transparent w-80" type="tel" name="phone-number" id="phone-number" />
+                                    </div>
+                                </fieldset>
+                                <div className="mt3">
+                                    <input className="f6 link dim br3 ph3 pv2 mb2 dib white bg-dark-blue w4" type="submit" value="Create" />
+                                    <input className="f6 link ml5 dim br3 ph3 pv2 mb2 dib white bg-dark-blue w4" type="reset" value="Clear" onClick={ClearOutput} />
+                                </div>
+                            </form>
+                        </article>
                     </div>
-                </form>
-            </article>
+                </div>
 
             <footer className="pt2 pb0 ph3 ph5-m ph6-l bg-light-gray">
                 <small className="f6 db tc">©<b className="ttu">Created by Group CB</b>., All Rights Reserved</small>
@@ -77,4 +82,4 @@ const LandlordSignup = () => {
 
 }
 
-export default LandlordSignup;
+export default AddWarden;
