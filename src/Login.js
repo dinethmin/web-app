@@ -43,8 +43,8 @@ const Login = () => {
                 </form>
             </main>
 
-            <footer class="pt4 mt3 pb0 ph3 ph5-m ph6-l bg-light-gray">
-                <small class="f6 db tc">©<b class="ttu">Created by Group CB</b>., All Rights Reserved</small>
+            <footer className="pt4 mt3 pb0 ph3 ph5-m ph6-l bg-light-gray">
+                <small className="f6 db tc">©<b className="ttu">Created by Group CB</b>., All Rights Reserved</small>
             </footer>
 
 

@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import './Admin.css';
 
 const ClearOutput = () => {
     const Name = document.getElementById('name');
@@ -15,13 +17,33 @@ const ClearOutput = () => {
 
 };
 
-const LandlordSignup = () => {
+const Signup = () => {
     return (
         <>
+            <nav className="db dt-l tr w-100 border-box ph5-l bg-dark-blue">
+                <div className="fl f7 f4-m f3-ns">
+                    <Link className="link dim white dib mr3" to="/AdminDashbord" title="AdminDashbord">Dashbord</Link>
+                    <Link className="link dim white dib mr3" to="/AdminProfile" title="AdminProfile">Profile</Link>
+                    <div className="dropdown1 link white dib mr3">
+                        <label className="dropbtn1">Create Account</label>
+                        <div className="dropdown-content1">
+                            <Link to="/AddLandlord">Landlord</Link>
+                            <Link to="/AddWarden">Warden</Link>
+                            <Link to="/AddStudent">Student</Link>
+                        </div>
+                    </div>
+                    <a className="link dim white dib mr2" href="#0">Logout</a>
+                </div>
+                <button className="dtc-l v-mid black dim b--none bg-transparent tl-l" title="Home">
+                    <img src="https://www.wikipedia.org/portal/wikipedia.org/assets/img/Wikipedia-logo-v2.png" className="br-100 ba h1 w1 h2-ns w2-ns dib v-mid" alt="Student logo" />
+                    Admin@gmail.com
+                </button>
+            </nav>
+
             <article className="pa6 black-80 vh-100 w-100">
                 <form className="measure center">
                     <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
-                        <legend className="tc f1 fw6 ph0 mh0">Landlord Sign Up</legend>
+                        <legend className="tc f1 fw6 ph0 mh0">Student Sign Up</legend>
                         <div className="mt3">
                             <label className="db fw4 lh-copy f6" htmlFor="name">Name</label>
                             <input className="pa2 input-reset ba bg-transparent w-100 measure" type="text" name="name" id="name" />
@@ -55,4 +77,4 @@ const LandlordSignup = () => {
 
 }
 
-export default LandlordSignup;
+export default Signup;
