@@ -32,6 +32,7 @@ const AddStudent = () => {
                             <Link to="/AddStudent">Student</Link>
                         </div>
                     </div>
+                    <Link className="link dim white dib mr3" to="/PostArticles" title="PostArticles">Articles</Link>
                     <a className="link dim white dib mr2" href="#0">Logout</a>
                 </div>
                 <button className="dtc-l v-mid black dim b--none bg-transparent tl-l" title="Home">
