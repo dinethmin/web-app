@@ -14,9 +14,9 @@ const AdminDashbord = () => {
                     <div className="fl f7 f4-m f3-ns">
                         <Link className="link dim white dib mr3" to="/AdminDashbord" title="AdminDashbord">Dashbord</Link>
                         <Link className="link dim white dib mr3" to="/AdminProfile" title="AdminProfile">Profile</Link>
-                        <div className="dropdown link white dib mr3">
-                            <label className="dropbtn">Create Account</label>
-                            <div className="dropdown-content">
+                        <div className="dropdown1 link white dib mr3">
+                            <label className="dropbtn1">Create Account</label>
+                            <div className="dropdown-content1">
                                 <Link to="/LandlordLogin">Landlord</Link>
                                 <Link to="/LandlordSignup">Warden</Link>
                                 <Link to="/LandlordSignup">Student</Link>

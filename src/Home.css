@@ -6,8 +6,11 @@
 .dropdown-content {
   display: none;
   position: absolute;
+  text-align: center;
   background-color: #333333;
   min-width: 160px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
   z-index: 1;
 }
 

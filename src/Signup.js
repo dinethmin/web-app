@@ -19,7 +19,7 @@ const Signup = () => {
     return (
         <>
             <article className="pa6 black-80 vh-100 w-100">
-                <form className="measure center" action="sign-up_submit" method="get" accept-charset="utf-8">
+                <form className="measure center">
                     <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
                         <legend className="tc f1 fw6 ph0 mh0">Student Sign Up</legend>
                         <div className="mt3">
