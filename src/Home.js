@@ -11,7 +11,7 @@ const Home = () => {
                     <Link className="link dim blue dib mr2" to="/Home" title="Home"><IoHome /></Link>
                     <Link className="link dim blue dib mr2" to="/Login" title="Login">Login</Link>
                     <Link className="link dim blue dib mr2" to="/Signup" title="Signup">Signup</Link>
-                    <div className="dropdown link dim blue dib mr2">
+                    <div className="dropdown link blue dib mr2">
                         <label className="dropbtn">Landlord</label>
                         <div className="dropdown-content">
                             <Link to="/LandlordLogin">Login</Link>
