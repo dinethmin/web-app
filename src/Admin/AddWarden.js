@@ -40,7 +40,7 @@ const LandlordSignup = () => {
                 </button>
             </nav>
 
-            <div className="pt5 fl w-100 bg-light-gray vh-100" id="column_two" style={{ flexGrow: 1 }}>
+            <div className="pt4 fl w-100 bg-light-gray vh-100" id="column_two" style={{ flexGrow: 1 }}>
                     <h1 className="tc ttu tracked">Create Warden Account</h1>
                     <div>
                         <article className="black-80 w-100 tc">
