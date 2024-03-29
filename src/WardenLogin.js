@@ -19,11 +19,11 @@ const WardenLogin = () => {
                     <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
                         <legend className="tc f1 fw6 ph0 mh0">Warden Log In</legend>
                         <div className="mt3">
-                            <label className="db fw6 lh-copy f6" for="email-address">Email</label>
+                            <label className="db fw6 lh-copy f6" htmlFor="email-address">Email</label>
                             <input className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="email" name="email-address" id="email-address" />
                         </div>
                         <div className="mv3">
-                            <label className="db fw6 lh-copy f6" for="password">Password</label>
+                            <label className="db fw6 lh-copy f6" htmlFor="password">Password</label>
                             <input className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="password" name="password" id="password" />
                         </div>
                     </fieldset>
@@ -37,8 +37,8 @@ const WardenLogin = () => {
                 </form>
             </main>
 
-            <footer class="pt4 mt3 pb0 ph3 ph5-m ph6-l bg-light-gray">
-                <small class="f6 db tc">©<b class="ttu">Created by Group CB</b>., All Rights Reserved</small>
+            <footer className="pt4 mt3 pb0 ph3 ph5-m ph6-l bg-light-gray">
+                <small className="f6 db tc">©<b className="ttu">Created by Group CB</b>., All Rights Reserved</small>
             </footer>
 
         </div>
