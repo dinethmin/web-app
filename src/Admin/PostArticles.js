@@ -2,6 +2,26 @@ import React from "react";
 import { Link } from "react-router-dom";
 import './Admin.css';
 
+const NewContent = () => {
+    const Headline = document.getElementById("headline");
+    const Headline_content = document.getElementById("headline_content");
+    const Author = document.getElementById("author");
+    const Author_content = document.getElementById("author_content");
+    const SubHeader = document.getElementById("subheader");
+    const SubHeader_content = document.getElementById("subheader_content");
+
+    if (!(Headline_content === "")) {
+        Headline_content.innerHTML = Headline.value;
+    }
+    if (!(Author_content === "")) {
+        Author_content.innerHTML = "A story by " + Author.value;
+    }
+    if (!(SubHeader_content === "")) {
+        SubHeader_content.innerHTML = SubHeader.value;
+    }
+
+
+};
 
 const PostArticles = () => {
     return (
@@ -32,18 +52,20 @@ const PostArticles = () => {
                     <h1 className="tc ttu tracked">Post Articles</h1>
                     <div>
                         <article className="helvetica pb5">
-                            <header className="vh-100 bg-light-pink dt w-100">
+                            <header className="bg-light-pink dt w-100">
                                 <div
                                     style={{ backgroundImage: "http://mrmrs.github.io/photos/display.jpg" }}
                                     className="dtc v-mid cover ph3 ph4-m ph5-l">
-                                    <input className="pa2 input-reset ba bg-transparent w-90" type="text" name="headline" id="headline" placeholder="Head Line" />
-                                    <h1 className="f2 f-subheadline-l measure lh-title fw9">A Night Taking Photos at San Francisco’s Spooky Ruins of the Sutro Baths</h1>
-                                    <h2 className="f6 fw6 black">A story by Nancy Drew</h2>
+                                    <input className="pa1 mt3 input-reset ba bg-transparent w-80" type="text" name="headline" id="headline" placeholder="Head Line, If you whant to enter leave a space" onChange={NewContent} />
+                                    <h1 className="f2 f-subheadline-l measure lh-title fw9" id="headline_content">A Night Taking Photos at San Francisco’s Spooky Ruins of the Sutro Baths</h1>
+                                    <input className="pa1 input-reset ba bg-transparent w-20" type="text" name="author" id="author" placeholder="Author" onChange={NewContent}></input>
+                                    <h2 className="f6 fw6 black" id="author_content">A story by Nancy Drew</h2>
                                 </div>
                             </header>
                             <div className="serif ph3 ph4-m ph5-l">
-                                <p className="lh-copy f5 f3-m f1-l measure center pv4">
-                                    On <time>March 14, 1896</time>, the Sutro Baths were opened to the public as the world's largest indoor swimming pool establishment. </p>
+                                <input className="pa1 mt3 input-reset ba bg-transparent w-80" type="text" name="subheader" id="subheader" placeholder="Sub Header" onChange={NewContent}></input>
+                                <p className="lh-copy f5 f3-m f1-l measure center pv4" id="subheader_content">
+                                    On March 14, 1896, the Sutro Baths were opened to the public as the world's largest indoor swimming pool establishment. </p>
                                 <div className="f5 f3-m lh-copy">
                                     <div className="cf dt-l w-100 bt b--black-10 pv4">
                                         <div className="dtc-l v-mid mw6 pr3-l">
