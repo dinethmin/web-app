@@ -92,10 +92,11 @@ const PostArticles = () => {
 
                                     <div className="cf dt-l w-100 bt b--black-10 pv4">
                                         <div className="dtc-l v-mid mw6 pr3-l">
-                                            <img className="w-100" src="http://mrmrs.github.io/photos/009.jpg" alt="" />
+                                            <input className="pa1 input-reset ba bg-transparent w-80 mb2" type="file" name="content_img" id="content_img"></input>
+                                            <img className="w-100" src="http://mrmrs.github.io/photos/009.jpg" alt="content_img" />
                                         </div>
                                         <div className="dtc-l v-mid f6 f5-m f4-l measure-l">
-                                            <input className="pa1 mt3 input-reset ba bg-transparent w-80" type="text" name="content" id="content" placeholder="Content, If you want to enter, leave a space" onChange={NewContent}></input>
+                                            <input className="pa1 input-reset ba bg-transparent w-70" type="text" name="content" id="content" placeholder="Content, If you want to enter, leave a space" onChange={NewContent}></input>
                                             <p className="measure pv4-l center" id="content_content">
                                                 Before it burned to the ground, the structure filled a small beach
                                                 inlet below the Cliff House, also owned by Adolph Sutro at the time.
@@ -105,24 +106,6 @@ const PostArticles = () => {
                                                 passageways, and a tunnel with a deep crevice in the middle. The
                                                 cause of the fire was arson. Shortly afterwards, the developer
                                                 left San Francisco and claimed insurance money.
-                                            </p>
-                                        </div>
-                                    </div>
-
-
-                                    <div className="cf dn">
-                                        <div className="fl w-100 w-50-l">
-                                            <p className="f5 pv4">
-                                                During high tides, water would flow directly into the pools from the
-                                                nearby ocean, recycling the <span className="db f4 f3-m f1-l fw6 measure lh-title">two million US gallons of water in about an hour. </span>
-                                            </p>
-                                        </div>
-                                        <div className="fl w-100 w-50-l">
-                                            <p className="f5">
-                                                During low tides, a powerful turbine water pump,
-                                                built inside a cave at sea level, could be switched on from a control
-                                                room and could fill the tanks at a rate of 6,000 US gallons a minute,
-                                                recycling all the water in five hours.
                                             </p>
                                         </div>
                                     </div>
