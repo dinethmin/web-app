@@ -46,7 +46,6 @@ const AddProperty = () => {
     };
 
     useEffect(() => {
-        // Accessing column_two.offsetHeight after the component has been rendered
         const column2 = document.getElementById('column_two');
         if (column2) {
             setHeight(column2.offsetHeight);
