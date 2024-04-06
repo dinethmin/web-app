@@ -84,9 +84,6 @@ const AddProperty = () => {
                 console.error('Error adding property:', error);
             });
     };
-    
-    
-
 
     useEffect(() => {
         // Accessing column_two.offsetHeight after the component has been rendered
