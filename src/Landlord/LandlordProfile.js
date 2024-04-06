@@ -69,6 +69,7 @@ const LandlordProfile = () => {
                     </div>
                     <div>
                         <article className="black-80 w-100 tc">
+                        <h1 className="tc ttu tracked">Profile</h1>
                             <form>
                                 <fieldset id="sign_up" className="ba2 b--transparent ph0 mh0 w-100 pa2 pr2">
                                     <div className="mt3">

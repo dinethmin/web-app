@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Hide = () => {
     const column1 = document.getElementById("column_one");
@@ -33,6 +33,9 @@ const ClearOutput = () => {
 
 const Profile = () => {
     const [height, setHeight] = useState(0); // Height state
+    const location = useLocation();
+    const queryParams = new URLSearchParams(location.search);
+    const userEmail = queryParams.get('email');
 
     useEffect(() => {
         // Accessing column_two.offsetHeight after the component has been rendered
@@ -47,7 +50,7 @@ const Profile = () => {
             <nav className="db dt-l w-100 tr border-box ph5-l bg-dark-blue">
                 <button className=" dtc-l v-mid black dim b--none bg-transparent tl-l" title="Home">
                     <img src="https://www.wikipedia.org/portal/wikipedia.org/assets/img/Wikipedia-logo-v2.png" className="br-100 ba h2 w2 dib v-mid" alt="Student logo" />
-                    student@gmail.com
+                    {userEmail}
                 </button>
             </nav>
 
@@ -55,10 +58,10 @@ const Profile = () => {
 
                 <div className="fl w-20 bg-navy" id="column_one" style={{ flexShrink: 0, height: height }}>
                     <div>
-                        <Link className="link f6 f3-ns fw6 tc mt4 db white no-underline underline-hover" to="/Dashbord" title="Dashbord">Dashbord</Link>
-                        <Link className="link f6 f3-ns fw6 tc mt4 db white no-underline underline-hover" to="/Profile" title="Profile">Profile</Link>
-                        <Link className="link f6 f3-ns fw6 tc mt4 db white no-underline underline-hover" to="/Reservations" title="Reservations">Reservations</Link>
-                        <a className="f6 f3-ns fw6 tc mt4 db white no-underline underline-hover" href="#0">Log Out</a>
+                        <Link className="link f6 f3-ns fw6 tc mt4 db white no-underline underline-hover" to={`/Dashbord?email=${userEmail}`} title="Dashbord">Dashbord</Link>
+                        <Link className="link f6 f3-ns fw6 tc mt4 db white no-underline underline-hover" to={`/Profile?email=${userEmail}`} title="Profile">Profile</Link>
+                        <Link className="link f6 f3-ns fw6 tc mt4 db white no-underline underline-hover" to={`/Reservations?email=${userEmail}`} title="Reservations">Reservations</Link>
+                        <Link className="f6 f3-ns fw6 tc mt4 db white no-underline underline-hover" to="/Home">Log Out</Link>
                     </div>
                 </div>
 
@@ -69,6 +72,7 @@ const Profile = () => {
                     </div>
                     <div>
                         <article className="black-80 w-100 tc">
+                            <h1 className="tc ttu tracked">Profile</h1>
                             <form>
                                 <fieldset id="sign_up" className="ba2 b--transparent ph0 mh0 w-100 pa2 pr2">
                                     <div className="mt3">
