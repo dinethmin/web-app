@@ -48,6 +48,46 @@ const AddProperty = () => {
         setMarkers([]);
     };
 
+    const handleFormSubmit = (event) => {
+        event.preventDefault();
+    
+        const formData = new FormData(); // Create a FormData object to store form data
+    
+        formData.append('name', document.getElementById('Property_Name').value);
+        formData.append('description', document.getElementById('Description').value);
+        formData.append('address', document.getElementById('Address').value);
+        formData.append('facilities', document.getElementById('Available_Facilities').value);
+        formData.append('phone', document.getElementById('Phone_No').value);
+        formData.append('availableFor', document.getElementById('Available_For').value);
+        formData.append('price', document.getElementById('Price').value);
+    
+        const photosInput = document.getElementById('Photos');
+        for (let i = 0; i < photosInput.files.length; i++) {
+            formData.append('photos', photosInput.files[i]); // Append each selected file to the FormData object
+        }
+    
+        formData.append('markers', JSON.stringify(markers)); // Convert markers array to JSON and append to FormData
+    
+        // Send the form data to your backend server
+        fetch('http://localhost:3000/AddProperty', {
+            method: 'POST',
+            body: formData // Send FormData instead of JSON.stringify
+        })
+            .then(response => response.json())
+            .then(data => {
+                // Handle successful response
+                console.log('Property added successfully:', data);
+                // Optionally, you can navigate to a different page or show a success message
+            })
+            .catch(error => {
+                // Handle error
+                console.error('Error adding property:', error);
+            });
+    };
+    
+    
+
+
     useEffect(() => {
         // Accessing column_two.offsetHeight after the component has been rendered
         const column2 = document.getElementById('column_two');
@@ -136,7 +176,7 @@ const AddProperty = () => {
                                         </div>
                                         <div className="mt3">
                                             <label className="db fw4 lh-copy f6" htmlFor="Photos">Photos</label>
-                                            <input className="pa2 input-reset ba bg-transparent w-90" type="file" name="Photos" id="Photos" />
+                                            <input className="pa2 input-reset ba bg-transparent w-90" type="file" multiple max="3" name="Photos" id="Photos" />
                                         </div>
                                     </fieldset>
 
@@ -154,7 +194,7 @@ const AddProperty = () => {
                                     </article>
 
                                     <div className="mt3">
-                                        <input className="f6 link dim br3 ph3 pv2 mb2 dib white bg-dark-blue w4" type="submit" value="Add" />
+                                        <input className="f6 link dim br3 ph3 pv2 mb2 dib white bg-dark-blue w4" type="submit" value="Add" onClick={handleFormSubmit}/>
                                         <input className="f6 ml4 link dim br3 ph3 pv2 mb2 dib white bg-dark-blue w4" type="reset" value="Clear" onClick={ClearOutput} />
                                     </div>
                                 </form>
