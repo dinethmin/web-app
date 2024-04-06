@@ -1,25 +1,28 @@
 import React from "react";
 import { APIProvider, Map } from '@vis.gl/react-google-maps';
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Card from "../Card";
 
 const position = { lat: 6.8214925581511565, lng: 80.04122509763354 };
 
 const WardenDashbord = () => {
+    const location = useLocation();
+    const queryParams = new URLSearchParams(location.search);
+    const userEmail = queryParams.get('email');
 
     return (
         <APIProvider apiKey={"AIzaSyDnk8killPj2EO1k_H9V1ocew2crxglWbM"}>
             <>
                 <nav className="db dt-l tr w-100 border-box ph5-l bg-dark-blue">
                     <div className="fl f7 f4-m f3-ns">
-                        <Link className="link dim white dib mr3" to="/WardenDashbord" title="WardenDashbord">Dashbord</Link>
-                        <Link className="link dim white dib mr3" to="/WardenProfile" title="WardenProfile">Profile</Link>
-                        <Link className="link dim white dib mr3" to="/WardenProperty" title="WardenProperty">Property</Link>
-                        <a className="link dim white dib mr2" href="#0">Logout</a>
+                        <Link className="link dim white dib mr3" to={`/WardenDashbord?email=${userEmail}`} title="WardenDashbord">Dashbord</Link>
+                        <Link className="link dim white dib mr3" to={`/WardenProfile?email=${userEmail}`} title="WardenProfile">Profile</Link>
+                        <Link className="link dim white dib mr3" to={`/WardenProperty?email=${userEmail}`} title="WardenProperty">Property</Link>
+                        <Link className="link dim white dib" to="/Home">Log Out</Link>
                     </div>
                     <button className="dtc-l v-mid black dim b--none bg-transparent tl-l" title="Home">
                         <img src="https://www.wikipedia.org/portal/wikipedia.org/assets/img/Wikipedia-logo-v2.png" className="br-100 ba h1 w1 h2-ns w2-ns dib v-mid" alt="Student logo" />
-                        Warden@gmail.com
+                        {userEmail}
                     </button>
                 </nav>
 
