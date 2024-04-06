@@ -7,7 +7,7 @@ const Card = ({ title, url, by }) => {
                 <img src={url} className="w-100" alt="tabby cat yawning." />
                 <div className="">
                     <a href="##" className="link dim lh-title">{title}</a>
-                    <p className="dark-gray">By {by}</p>
+                    <p className="dark-gray">{by}</p>
                 </div>
             </div>
         </>

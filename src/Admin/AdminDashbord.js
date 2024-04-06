@@ -1,6 +1,6 @@
-import React from "react";
-import { APIProvider, Map } from '@vis.gl/react-google-maps';
+import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { APIProvider, Map } from '@vis.gl/react-google-maps';
 import './Admin.css';
 import Card from "../Card";
 
@@ -10,6 +10,26 @@ const AdminDashbord = () => {
     const location = useLocation();
     const queryParams = new URLSearchParams(location.search);
     const userEmail = queryParams.get('email');
+    const [articles, setArticles] = useState([]);
+
+    useEffect(() => {
+        // Fetch articles from the backend API
+        fetch('http://localhost:3000/Articles')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to fetch articles');
+                }
+                return response.json();
+            })
+            .then(data => {
+                setArticles(data); // Assuming the response data is an array of articles
+            })
+            .catch(error => {
+                console.error('Error fetching articles:', error);
+                // Optionally, you can set an empty array or handle the error in a different way
+            });
+    }, []);
+    
 
     return (
         <APIProvider apiKey={"AIzaSyDnk8killPj2EO1k_H9V1ocew2crxglWbM"}>
@@ -62,25 +82,20 @@ const AdminDashbord = () => {
                     </div>
                 </article>
 
+                {/* Articles section */}
                 <h2 className="tc tracked mt0 mb0 f2 bg-light-gray">Articles</h2>
                 <div className="tc bg-light-gray m0 pb4">
-                    <Card
-                        title={"Tech Giant Invests Huge Money to Build a Computer Out of Science Fiction"}
-                        url={"http://mrmrs.github.io/photos/cpu.jpg"}
-                        by={"Robin Darnell"}
-                    />
-                    <Card
-                        title={"Warehouse Prices Are Fast on the Rise"}
-                        url={"http://mrmrs.github.io/photos/warehouse.jpg"}
-                        by={"Robin Darnell"}
-                    />
-                    <Card
-                        title={"Giant Whale Invests Huge Money to Build a Computer Out of Plankton"}
-                        url={"http://mrmrs.github.io/photos/whale.jpg"}
-                        by={"Robin Darnell"}
-                    />
+                    {articles.map((article, index) => (
+                        <Card
+                            key={index}
+                            title={article.headline}
+                            url={`data:image/jpeg;base64,${article.content_img}`} // Assuming this is the URL of the article's image
+                            by={article.author}
+                        />
+                    ))}
                 </div>
 
+                {/* Your footer */}
                 <footer className="bottom-0 w-100 ph3 ph5-m ph6-l bg-light-gray z-9999">
                     <small className="f6 db tc">©<b className="ttu">Created by Group CB</b>., All Rights Reserved</small>
                 </footer>
