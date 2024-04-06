@@ -46,7 +46,7 @@ const AdminProfile = () => {
                 <div className="fl w-0 bg-navy" id="column_one"></div>
 
                 <div className="pt4 fl w-100 bg-light-gray vh-100" id="column_two" style={{ flexGrow: 1 }}>
-                    <h1 className="tc ttu tracked">Admin Profile</h1>
+                    <h1 className="tc ttu tracked">Profile</h1>
                     <div>
                         <article className="black-80 w-100 tc">
                             <form>
