@@ -2,11 +2,15 @@ import React, { useState, useEffect } from "react";
 import { APIProvider, Map } from '@vis.gl/react-google-maps';
 import { Link } from "react-router-dom";
 import Card from "../Card";
+import { useLocation } from "react-router-dom";
 
 const position = { lat: 6.8214925581511565, lng: 80.04122509763354 };
 
 const Dashboard = () => {
     const [height, setHeight] = useState(0); // Height state
+    const location = useLocation();
+    const queryParams = new URLSearchParams(location.search);
+    const userEmail = queryParams.get('email');
 
     useEffect(() => {
         const column2 = document.getElementById('column_two');
@@ -37,7 +41,7 @@ const Dashboard = () => {
                 <nav className="db dt-l w-100 tr border-box ph5-l bg-dark-blue">
                     <button className=" dtc-l v-mid black dim b--none bg-transparent tl-l" title="Home">
                         <img src="https://www.wikipedia.org/portal/wikipedia.org/assets/img/Wikipedia-logo-v2.png" className="br-100 ba h2 w2 dib v-mid" alt="Student logo" />
-                        Landlord@gmail.com
+                        {userEmail}
                     </button>
                 </nav>
 
@@ -45,10 +49,10 @@ const Dashboard = () => {
 
                     <div className="fl w-20 bg-navy" id="column_one" style={{ flexShrink: 0, height: height }}>
                         <div>
-                            <Link className="link f6 f3-ns fw6 tc mt4 db white no-underline underline-hover" to="/LandlordDashbord" title="LandlordDashbord">Dashbord</Link>
-                            <Link className="link f6 f3-ns fw6 tc mt4 db white no-underline underline-hover" to="/LandlordProfile" title="LandlordProfile">Profile</Link>
-                            <Link className="link f6 f3-ns fw6 tc mt4 db white no-underline underline-hover" to="/AddProperty" title="AddProperty">Property</Link>
-                            <a className="f6 f3-ns fw6 tc mt4 db white no-underline underline-hover" href="#0">Log Out</a>
+                            <Link className="link f6 f3-ns fw6 tc mt4 db white no-underline underline-hover" to={`/LandlordDashbord?email=${userEmail}`} title="LandlordDashbord">Dashbord</Link>
+                            <Link className="link f6 f3-ns fw6 tc mt4 db white no-underline underline-hover" to={`/LandlordProfile?email=${userEmail}`} title="LandlordProfile">Profile</Link>
+                            <Link className="link f6 f3-ns fw6 tc mt4 db white no-underline underline-hover" to={`/AddProperty?email=${userEmail}`} title="AddProperty">Property</Link>
+                            <Link className="f6 f3-ns fw6 tc mt4 db white no-underline underline-hover" to="/Home">Log Out</Link>
                         </div>
                     </div>
 

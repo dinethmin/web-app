@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import './Admin.css';
 
 const ClearOutput = () => {
@@ -18,26 +18,30 @@ const ClearOutput = () => {
 };
 
 const AdminProfile = () => {
+    const location = useLocation();
+    const queryParams = new URLSearchParams(location.search);
+    const userEmail = queryParams.get('email');
+    
     return (
         <>
             <nav className="db dt-l tr w-100 border-box ph5-l bg-dark-blue">
-                <div className="fl f7 f4-m f3-ns">
-                    <Link className="link dim white dib mr3" to="/AdminDashbord" title="AdminDashbord">Dashbord</Link>
-                    <Link className="link dim white dib mr3" to="/AdminProfile" title="AdminProfile">Profile</Link>
-                    <div className="dropdown1 link white dib mr3">
-                        <label className="dropbtn1">Create Account</label>
-                        <div className="dropdown-content1">
-                            <Link to="/AddLandlord">Landlord</Link>
-                            <Link to="/AddWarden">Warden</Link>
-                            <Link to="/AddStudent">Student</Link>
+            <div className="fl f7 f4-m f3-ns">
+                        <Link className="link dim white dib mr3" to={`/AdminDashbord?email=${userEmail}`} title="AdminDashbord">Dashbord</Link>
+                        <Link className="link dim white dib mr3" to={`/AdminProfile?email=${userEmail}`} title="AdminProfile">Profile</Link>
+                        <div className="dropdown1 link white dib mr3">
+                            <label className="dropbtn1">Create Account</label>
+                            <div className="dropdown-content1">
+                                <Link to={`/AddLandlord?email=${userEmail}`}>Landlord</Link>
+                                <Link to={`/AddWarden?email=${userEmail}`}>Warden</Link>
+                                <Link to={`/AddStudent?email=${userEmail}`}>Student</Link>
+                            </div>
                         </div>
+                        <Link className="link dim white dib mr3" to={`/PostArticles?email=${userEmail}`} title="PostArticles">Articles</Link>
+                        <Link className="link dim white dib mr2" to="/Home">Log Out</Link>
                     </div>
-                    <Link className="link dim white dib mr3" to="/PostArticles" title="PostArticles">Articles</Link>
-                    <a className="link dim white dib mr2" href="#0">Logout</a>
-                </div>
                 <button className="dtc-l v-mid black dim b--none bg-transparent tl-l" title="Home">
                     <img src="https://www.wikipedia.org/portal/wikipedia.org/assets/img/Wikipedia-logo-v2.png" className="br-100 ba h1 w1 h2-ns w2-ns dib v-mid" alt="Student logo" />
-                    Admin@gmail.com
+                    {userEmail}
                 </button>
             </nav>
 

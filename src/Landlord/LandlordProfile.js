@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Hide = () => {
     const column1 = document.getElementById("column_one");
@@ -33,6 +33,9 @@ const ClearOutput = () => {
 
 const LandlordProfile = () => {
     const [height, setHeight] = useState(0); // Height state
+    const location = useLocation();
+    const queryParams = new URLSearchParams(location.search);
+    const userEmail = queryParams.get('email');
 
     useEffect(() => {
         // Accessing column_two.offsetHeight after the component has been rendered
@@ -55,10 +58,10 @@ const LandlordProfile = () => {
 
                 <div className="fl w-20 bg-navy" id="column_one" style={{ flexShrink: 0, height: height }}>
                     <div>
-                        <Link className="link f6 f3-ns fw6 tc mt4 db white no-underline underline-hover" to="/LandlordDashbord" title="LandlordDashbord">Dashbord</Link>
-                        <Link className="link f6 f3-ns fw6 tc mt4 db white no-underline underline-hover" to="/LandlordProfile" title="LandlordProfile">Profile</Link>
-                        <Link className="link f6 f3-ns fw6 tc mt4 db white no-underline underline-hover" to="/AddProperty" title="AddProperty">Property</Link>
-                        <a className="f6 f3-ns fw6 tc mt4 db white no-underline underline-hover" href="#0">Log Out</a>
+                        <Link className="link f6 f3-ns fw6 tc mt4 db white no-underline underline-hover" to={`/LandlordDashbord?email=${userEmail}`} title="LandlordDashbord">Dashbord</Link>
+                        <Link className="link f6 f3-ns fw6 tc mt4 db white no-underline underline-hover" to={`/LandlordProfile?email=${userEmail}`} title="LandlordProfile">Profile</Link>
+                        <Link className="link f6 f3-ns fw6 tc mt4 db white no-underline underline-hover" to={`/AddProperty?email=${userEmail}`} title="AddProperty">Property</Link>
+                        <Link className="f6 f3-ns fw6 tc mt4 db white no-underline underline-hover" to="/Home">Log Out</Link>
                     </div>
                 </div>
 
@@ -69,7 +72,7 @@ const LandlordProfile = () => {
                     </div>
                     <div>
                         <article className="black-80 w-100 tc">
-                        <h1 className="tc ttu tracked">Profile</h1>
+                            <h1 className="tc ttu tracked">Profile</h1>
                             <form>
                                 <fieldset id="sign_up" className="ba2 b--transparent ph0 mh0 w-100 pa2 pr2">
                                     <div className="mt3">
