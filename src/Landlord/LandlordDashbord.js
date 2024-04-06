@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { APIProvider, Map } from '@vis.gl/react-google-maps';
 import { Link } from "react-router-dom";
+import Card from "../Card";
 
 const position = { lat: 6.8214925581511565, lng: 80.04122509763354 };
 
@@ -51,7 +52,7 @@ const Dashboard = () => {
                         </div>
                     </div>
 
-                    <div className="fl w-80 bg-light-gray vh-100" id="column_two" style={{ flexGrow: 1 }}>
+                    <div className="fl w-80 bg-light-gray pb4" id="column_two" style={{ flexGrow: 1 }}>
                         <div>
                             <button className="f6 br2 ph3 pv2 mb2 dib black bg-light-gray" id="HideBtn" onClick={handleHideBlocks}>Hide Blocks</button>
                         </div>
@@ -73,8 +74,27 @@ const Dashboard = () => {
                                 </div>
                             </div>
                         </article>
-
+                        
+                        <h2 className="tc tracked mt4 mb0 f2 bg-light-gray">Articles</h2>
+                        <div className="tc bg-light-gray m0 pb4">
+                            <Card
+                                title={"Tech Giant Invests Huge Money to Build a Computer Out of Science Fiction"}
+                                url={"http://mrmrs.github.io/photos/cpu.jpg"}
+                                by={"Robin Darnell"}
+                            />
+                            <Card
+                                title={"Warehouse Prices Are Fast on the Rise"}
+                                url={"http://mrmrs.github.io/photos/warehouse.jpg"}
+                                by={"Robin Darnell"}
+                            />
+                            <Card
+                                title={"Giant Whale Invests Huge Money to Build a Computer Out of Plankton"}
+                                url={"http://mrmrs.github.io/photos/whale.jpg"}
+                                by={"Robin Darnell"}
+                            />
+                        </div>
                     </div>
+
                 </article>
 
                 <footer className="bottom-0 w-100 ph3 ph5-m ph6-l bg-light-gray z-9999">
