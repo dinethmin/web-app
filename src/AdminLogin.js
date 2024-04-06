@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Login = ({ loadUser }) => {
+const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
 
     const handleLogin = () => {
-        /*fetch('http://localhost:3000/Login', {
+        fetch('http://localhost:3000/AdminLogin', {
             method: 'post',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -18,15 +18,14 @@ const Login = ({ loadUser }) => {
             .then(response => response.json())
             .then(user => {
                 if (user.id) {
-                    loadUser(user);
+                    const useremail = user.email;
                     // Navigate to Dashboard after successful login
-                    navigate("/AdminDashbord");
+                    navigate(`/AdminDashbord?email=${useremail}`);
                 }
             })
             .catch(error => {
                 console.error('Error:', error);
-            });*/
-            navigate("/AdminDashbord");
+            });
     };
 
     const clearFields = () => {
@@ -37,7 +36,7 @@ const Login = ({ loadUser }) => {
     return (
         <>
             <main className="pa6 black-80 vh-100 w-100">
-                <div className="measure center">
+            <div className="measure center">
                     <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
                         <legend className="tc f1 fw6 ph0 mh0">Admin Log In</legend>
                         <div className="mt3">

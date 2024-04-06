@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Login = ({ loadUser }) => {
+const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
 
     const handleLogin = () => {
-        /*fetch('http://localhost:3000/Login', {
+        fetch('http://localhost:3000/LandlordLogin', {
             method: 'post',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -18,15 +18,14 @@ const Login = ({ loadUser }) => {
             .then(response => response.json())
             .then(user => {
                 if (user.id) {
-                    loadUser(user);
+                    const useremail = user.email;
                     // Navigate to Dashboard after successful login
-                    navigate("/LandlordDashbord");
+                    navigate(`/LandlordDashbord?email=${useremail}`);
                 }
             })
             .catch(error => {
                 console.error('Error:', error);
-            });*/
-            navigate("/LandlordDashbord");
+            });
     };
 
     const clearFields = () => {
@@ -39,7 +38,7 @@ const Login = ({ loadUser }) => {
             <main className="pa6 black-80 vh-100 w-100">
                 <div className="measure center">
                     <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
-                        <legend className="tc f1 fw6 ph0 mh0">Landlord Log In</legend>
+                        <legend className="tc f1 fw6 ph0 mh0">Student Log In</legend>
                         <div className="mt3">
                             <label className="db fw6 lh-copy f6" htmlFor="email-address">Email</label>
                             <input className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="email" name="email-address" id="email-address" value={email} onChange={(e) => setEmail(e.target.value)} />
