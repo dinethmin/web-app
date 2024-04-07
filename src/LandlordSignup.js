@@ -52,7 +52,7 @@ const LandlordSignup = () => {
             <article className="pa6 black-80 vh-100 w-100">
                 <div className="measure center">
                     <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
-                        <legend className="tc f1 fw6 ph0 mh0">Student Sign Up</legend>
+                        <legend className="tc f1 fw6 ph0 mh0">Landlord Sign Up</legend>
                         <div className="mt3">
                             <label className="db fw4 lh-copy f6" htmlFor="name">Name</label>
                             <input className="pa2 input-reset ba bg-transparent w-100 measure" type="text" name="name" id="name" value={name} onChange={(e) => setName(e.target.value)} />
