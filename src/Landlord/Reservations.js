@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import ReservationsCard from "../ReservationsCard";
-import ReserveCard from "../ReserveCard";
+import UserReservationsCard from "./UserReservationsCard";
+import MyPropertyCard from "./MyPropertyCard";
 
 const Hide = () => {
     const column1 = document.getElementById("column_one");
@@ -27,7 +27,7 @@ const Reservations = () => {
 
     useEffect(() => {
         // Fetch all property details from the database
-        fetch('http://localhost:3000/Markers') // Replace with your actual endpoint
+        fetch(`http://localhost:3000/LandlordReservations/${userEmail}`) // Replace with your actual endpoint
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Failed to fetch property details');
@@ -43,7 +43,7 @@ const Reservations = () => {
             });
 
         // Fetch User property details from the database
-        fetch(`http://localhost:3000/Reservations/${userEmail}/Reserve`) // Replace with your actual endpoint
+        fetch(`http://localhost:3000/LandlordReservations/${userEmail}/Reserve`) // Replace with your actual endpoint
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Failed to fetch property details');
@@ -74,9 +74,10 @@ const Reservations = () => {
 
                 <div className="fl w-20 bg-navy" id="column_one" style={{ flexShrink: 0, overflow: "auto" }}>
                     <div>
-                        <Link className="link f6 f3-ns fw6 tc mt4 db white no-underline underline-hover" to={`/Dashbord?email=${userEmail}`} title="Dashbord">Dashbord</Link>
-                        <Link className="link f6 f3-ns fw6 tc mt4 db white no-underline underline-hover" to={`/Profile?email=${userEmail}`} title="Profile">Profile</Link>
-                        <Link className="link f6 f3-ns fw6 tc mt4 db white no-underline underline-hover" to={`/Reservations?email=${userEmail}`} title="Reservations">Reservations</Link>
+                        <Link className="link f6 f3-ns fw6 tc mt4 db white no-underline underline-hover" to={`/LandlordDashbord?email=${userEmail}`} title="LandlordDashbord">Dashbord</Link>
+                        <Link className="link f6 f3-ns fw6 tc mt4 db white no-underline underline-hover" to={`/LandlordProfile?email=${userEmail}`} title="LandlordProfile">Profile</Link>
+                        <Link className="link f6 f3-ns fw6 tc mt4 db white no-underline underline-hover" to={`/AddProperty?email=${userEmail}`} title="AddProperty">Property</Link>
+                        <Link className="link f6 f3-ns fw6 tc mt4 db white no-underline underline-hover" to={`/LandlordReservations?email=${userEmail}`} title="LandlordReservations">Reservations</Link>
                         <Link className="f6 f3-ns fw6 tc mt4 db white no-underline underline-hover" to="/Home">Log Out</Link>
                     </div>
                 </div>
@@ -85,24 +86,24 @@ const Reservations = () => {
                     <div>
                         <button className="f6 br2 ph3 pv2 mb2 dib black bg-light-gray" id="HideBtn" onClick={Hide}>Hide Blocks</button>
                     </div>
-                    <h1 className="tc ttu tracked">properties</h1>
+                    <h1 className="tc ttu tracked">my properties</h1>
                     <div className="tc bg-light-gray m0 pb4">
-
-                        {/* Render PropertyCard components for each property */}
-                        {properties.map((property, index) => (
-                            <ReservationsCard key={index} property={property} email={userEmail} />
-                        ))}
-                    </div>
-
-                    <div>
-                        <h1 className="tc ttu tracked">Your Reservations</h1>
-                        <div className="tc bg-light-gray m0 pb4">
 
                             {/* Render PropertyCard components for each property */}
                             {property.map((property, index) => (
-                                <ReserveCard key={index} property={property} />
+                                <MyPropertyCard key={index} property={property} />
                             ))}
                         </div>
+
+                    <div>
+                        <h1 className="tc ttu tracked">Reservations</h1>
+                        <div className="tc bg-light-gray m0 pb4">
+
+                        {/* Render PropertyCard components for each property */}
+                        {properties.map((property, index) => (
+                            <UserReservationsCard key={index} property={property} email={userEmail} />
+                        ))}
+                    </div>
                     </div>
 
                 </div>

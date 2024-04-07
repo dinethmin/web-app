@@ -23,6 +23,7 @@ import AdminDashbord from './Admin/AdminDashbord';
 import AdminProfile from './Admin/AdminProfile';
 import AddStudent from './Admin/AddStudent';
 import AddLandlord from './Admin/AddLandlord';
+import LandlordReservations from './Landlord/Reservations';
 import AddWarden from './Admin/AddWarden';
 import PostArticles from './Admin/PostArticles';
 import reportWebVitals from './reportWebVitals';
@@ -47,6 +48,7 @@ root.render(
         <Route path="Profile" element={<Profile/>}></Route>
         <Route path="Reservations" element={<Reservations/>}></Route>
         <Route path="LandlordDashbord" element={<LandlordDashbord/>}></Route>
+        <Route path="LandlordReservations" element={<LandlordReservations/>}></Route>
         <Route path="LandlordProfile" element={<LandlordProfile/>}></Route>
         <Route path="AddProperty" element={<AddProperty/>}></Route>
         <Route path="WardenDashbord" element={<WardenDashbord/>}></Route>

@@ -36,7 +36,7 @@ const Login = () => {
     return (
         <>
             <main className="pa6 black-80 vh-100 w-100">
-            <div className="measure center">
+                <div className="measure center">
                     <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
                         <legend className="tc f1 fw6 ph0 mh0">Admin Log In</legend>
                         <div className="mt3">
