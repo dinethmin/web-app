@@ -67,9 +67,9 @@ const PropertyCard = ({ property }) => {
                             <p className="f7 f4-l lh-copy athelas">Status: {property.status}</p>
                             <img src={property.photos} className="w-100" alt="Article" />
                             <div>
-                                <p>ID: {property.id}</p>
-                                <input className="tc f4-ns w4-ns bg-green mr2" type="submit" id={property.id} value="Accept" onClick={handleAccept} />
-                                <input className="tc f4-ns w4-ns bg-red" type="submit" id={property.id} value="Reject" onClick={handleReject} />
+                                {/*}<p>ID: {property.id}</p>{*/}
+                                <input className="tc grow no-underline br-pill pv2 mb2 dib white f4-ns w4-ns bg-green mr2" type="submit" id={property.id} value="Accept" onClick={handleAccept} />
+                                <input className="tc grow no-underline br-pill pv2 mb2 dib white f4-ns w4-ns bg-red" type="submit" id={property.id} value="Reject" onClick={handleReject} />
                             </div>
                         </div>
 

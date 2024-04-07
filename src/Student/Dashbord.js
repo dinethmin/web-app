@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { APIProvider, Map } from '@vis.gl/react-google-maps';
+import { APIProvider, Map, Marker } from '@vis.gl/react-google-maps';
 import { Link } from "react-router-dom";
 import Card from "../Card";
 import { useLocation } from "react-router-dom";
@@ -12,6 +12,7 @@ const Dashboard = () => {
     const queryParams = new URLSearchParams(location.search);
     const userEmail = queryParams.get('email');
     const [articles, setArticles] = useState([]);
+    const [markers, setMarkers] = useState([]);
 
     useEffect(() => {
         const column2 = document.getElementById('column_two');
@@ -32,6 +33,45 @@ const Dashboard = () => {
             })
             .catch(error => {
                 console.error('Error fetching articles:', error);
+            });
+
+        fetch(`http://localhost:3000/Reservations/${userEmail}/Reserve`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to fetch markers');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Markers data:', data); // Log markers data
+                const parsedMarkers = data.map(item => {
+                    try {
+                        let markersArray;
+                        // Check if markers property is already an array
+                        if (Array.isArray(item.markers)) {
+                            markersArray = item.markers;
+                        } else {
+                            // Parse markers string to JSON
+                            markersArray = JSON.parse(item.markers.replace(/^"|"$/g, '').replace(/\\"/g, '"'));
+                        }
+                        // Ensure that the markersArray is an array
+                        if (!Array.isArray(markersArray)) {
+                            throw new Error('Markers data is not an array');
+                        }
+                        // Ensure that each marker has lat and lng properties
+                        const validMarkers = markersArray.filter(marker => {
+                            return typeof marker.lat === 'number' && typeof marker.lng === 'number';
+                        });
+                        return validMarkers;
+                    } catch (error) {
+                        console.error('Error parsing markers:', error);
+                        return null;
+                    }
+                });
+                setMarkers(parsedMarkers.filter(marker => marker !== null));
+            })
+            .catch(error => {
+                console.error('Error fetching markers:', error);
             });
     }, []);
 
@@ -89,7 +129,21 @@ const Dashboard = () => {
                             <div className="tc">
                                 <h1 className="mt0">Accommodations</h1>
                                 <div className="m-100 vh-50">
-                                    <Map defaultCenter={position} defaultZoom={12}>
+                                    <Map defaultCenter={position} defaultZoom={15}>
+                                        {/* Render markers */}
+                                        {markers.map((marker, index) => {
+                                            // Check if marker position is wrapped in an array
+                                            const positionData = Array.isArray(marker) ? marker[0] : marker;
+                                            // Ensure that marker position contains valid latitude and longitude values
+                                            if (typeof positionData.lat === 'number' && typeof positionData.lng === 'number') {
+                                                return (
+                                                    <Marker key={index} position={{ lat: positionData.lat, lng: positionData.lng }} />
+                                                );
+                                            } else {
+                                                console.error('Invalid marker position:', marker);
+                                                return null;
+                                            }
+                                        })}
                                     </Map>
                                 </div>
                             </div>

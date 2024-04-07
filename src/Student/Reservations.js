@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import ReservationsCard from "../ReservationsCard";
+import ReserveCard from "../ReserveCard";
 
 const Hide = () => {
     const column1 = document.getElementById("column_one");
@@ -22,10 +23,11 @@ const Reservations = () => {
     const queryParams = new URLSearchParams(location.search);
     const userEmail = queryParams.get('email');
     const [properties, setProperties] = useState([]);
+    const [property, setproperty] = useState([]);
 
     useEffect(() => {
         // Fetch all property details from the database
-        fetch('http://localhost:3000/WardenProperty') // Replace with your actual endpoint
+        fetch('http://localhost:3000/Markers') // Replace with your actual endpoint
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Failed to fetch property details');
@@ -35,6 +37,22 @@ const Reservations = () => {
             .then(data => {
                 console.log('Properties data:', data); // Log properties data
                 setProperties(data); // Set the properties state with fetched data
+            })
+            .catch(error => {
+                console.error('Error fetching property details:', error);
+            });
+
+        // Fetch User property details from the database
+        fetch(`http://localhost:3000/Reservations/${userEmail}/Reserve`) // Replace with your actual endpoint
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to fetch property details');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Properties data:', data); // Log properties data
+                setproperty(data); // Set the properties state with fetched data
             })
             .catch(error => {
                 console.error('Error fetching property details:', error);
@@ -72,8 +90,19 @@ const Reservations = () => {
 
                         {/* Render PropertyCard components for each property */}
                         {properties.map((property, index) => (
-                            <ReservationsCard key={index} property={property} />
+                            <ReservationsCard key={index} property={property} email={userEmail} />
                         ))}
+                    </div>
+
+                    <div>
+                        <h1 className="tc ttu tracked">Your Reservations</h1>
+                        <div className="tc bg-light-gray m0 pb4">
+
+                            {/* Render PropertyCard components for each property */}
+                            {property.map((property, index) => (
+                                <ReserveCard key={index} property={property} />
+                            ))}
+                        </div>
                     </div>
 
                 </div>
