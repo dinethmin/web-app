@@ -1,26 +1,55 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import './Admin.css';
-
-const ClearOutput = () => {
-    const Name = document.getElementById('name');
-    const Phone = document.getElementById('phone-number');
-    const Email = document.getElementById('email-address');
-    const Password = document.getElementById('password');
-
-    if (!(Email === "") || !(Password === "") || !(Name === "") || !(Password === "")) {
-        Name.value = "";
-        Phone.value = "";
-        Email.value = "";
-        Password.value = "";
-    }
-
-};
 
 const AddLandlord = () => {
     const location = useLocation();
     const queryParams = new URLSearchParams(location.search);
     const userEmail = queryParams.get('email');
+    const [name, setName] = useState("");
+    const [phoneNumber, setPhoneNumber] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    
+
+    const handleSignin = () => {
+        fetch('http://localhost:3000/AddLandlord', {
+            method: 'post',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                email: email,
+                password: password,
+                name: name,
+                phone: phoneNumber
+            })
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(user => {
+                if (user.id) {
+                    window.alert("Landlord Registration successful");
+                    clearOutput();
+                } else {
+                    console.error('Registration failed:', user);
+                }
+            })
+            .catch(error => {
+                console.error('Error during Registration:', error);
+            });
+    };
+
+
+    const clearOutput = () => {
+        setName("");
+        setPhoneNumber("");
+        setEmail("");
+        setPassword("");
+    };
+
 
     return (
         <>
@@ -49,30 +78,30 @@ const AddLandlord = () => {
                 <h1 className="tc ttu tracked">Create Landlord Account</h1>
                 <div>
                     <article className="black-80 w-100 tc">
-                        <form>
+                        <div>
                             <fieldset id="sign_up" className="ba2 b--transparent ph0 mh0 w-100 pa2 pr2">
                                 <div className="mt3">
                                     <label className="db fw4 lh-copy f6" htmlFor="name">Name</label>
-                                    <input className="pa2 input-reset ba bg-transparent w-90" type="text" name="name" id="name" />
+                                    <input className="pa2 input-reset ba bg-transparent w-90" type="text" name="name" id="name" value={name} onChange={(e) => setName(e.target.value)} />
                                 </div>
                                 <div className="mt3">
                                     <label className="db fw4 lh-copy f6" htmlFor="email-address">Email address</label>
-                                    <input className="pa2 input-reset ba bg-transparent w-90" type="email" name="email-address" id="email-address" />
+                                    <input className="pa2 input-reset ba bg-transparent w-90" type="email" name="email-address" id="email-address" value={email} onChange={(e) => setEmail(e.target.value)} />
                                 </div>
                                 <div className="mt3 fn fl-ns w-50-ns">
                                     <label className="db fw4 lh-copy f6" htmlFor="password">Password</label>
-                                    <input className="pa2 input-reset ba bg-transparent w-80" type="password" name="password" id="password" />
+                                    <input className="pa2 input-reset ba bg-transparent w-80" type="password" name="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
                                 </div>
                                 <div className="mt3 fn fl-ns w-50-ns">
                                     <label className="db fw4 lh-copy f6" htmlFor="phone-number">Phone Number</label>
-                                    <input className="pa2 input-reset ba bg-transparent w-80" type="tel" name="phone-number" id="phone-number" />
+                                    <input className="pa2 input-reset ba bg-transparent w-80" type="tel" name="phone-number" id="phone-number" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} />
                                 </div>
                             </fieldset>
                             <div className="mt3">
-                                <input className="f6 link dim br3 ph3 pv2 mb2 dib white bg-dark-blue w4" type="submit" value="Create" />
-                                <input className="f6 link ml5 dim br3 ph3 pv2 mb2 dib white bg-dark-blue w4" type="reset" value="Clear" onClick={ClearOutput} />
+                                <input className="f6 link dim br3 ph3 pv2 mb2 dib white bg-dark-blue w4" type="submit" value="Create" onClick={handleSignin}/>
+                                <input className="f6 link ml5 dim br3 ph3 pv2 mb2 dib white bg-dark-blue w4" type="reset" value="Clear" onClick={clearOutput} />
                             </div>
-                        </form>
+                        </div>
                     </article>
                 </div>
             </div>
