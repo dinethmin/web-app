@@ -76,8 +76,8 @@ const AddProperty = () => {
             .then(response => response.json())
             .then(data => {
                 // Handle successful response
-                console.log('Property added successfully:', data);
-                // Optionally, you can navigate to a different page or show a success message
+                window.alert("Property added successfully");
+                ClearOutput();
             })
             .catch(error => {
                 // Handle error

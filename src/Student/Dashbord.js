@@ -11,12 +11,28 @@ const Dashboard = () => {
     const location = useLocation();
     const queryParams = new URLSearchParams(location.search);
     const userEmail = queryParams.get('email');
+    const [articles, setArticles] = useState([]);
 
     useEffect(() => {
         const column2 = document.getElementById('column_two');
         if (column2) {
             setHeight(column2.offsetHeight);
         }
+
+        // Fetch articles from the backend API
+        fetch('http://localhost:3000/Articles')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to fetch articles');
+                }
+                return response.json();
+            })
+            .then(data => {
+                setArticles(data); // Assuming the response data is an array of articles
+            })
+            .catch(error => {
+                console.error('Error fetching articles:', error);
+            });
     }, []);
 
     const handleHideBlocks = () => {
@@ -79,28 +95,22 @@ const Dashboard = () => {
                             </div>
                         </article>
 
-                        <h2 className="tc tracked mt4 mb0 f2 bg-light-gray">Articles</h2>
+                        {/* Articles section */}
+                        <h2 className="tc tracked mt0 mb0 f2 bg-light-gray">Articles</h2>
                         <div className="tc bg-light-gray m0 pb4">
-                            <Card
-                                title={"Tech Giant Invests Huge Money to Build a Computer Out of Science Fiction"}
-                                url={"http://mrmrs.github.io/photos/cpu.jpg"}
-                                by={"Robin Darnell"}
-                            />
-                            <Card
-                                title={"Warehouse Prices Are Fast on the Rise"}
-                                url={"http://mrmrs.github.io/photos/warehouse.jpg"}
-                                by={"Robin Darnell"}
-                            />
-                            <Card
-                                title={"Giant Whale Invests Huge Money to Build a Computer Out of Plankton"}
-                                url={"http://mrmrs.github.io/photos/whale.jpg"}
-                                by={"Robin Darnell"}
-                            />
+                            {articles.map((article, index) => (
+                                <Card
+                                    key={index}
+                                    title={article.headline}
+                                    url={`data:image/jpeg;base64,${article.content_img}`} // Assuming this is the URL of the article's image
+                                    by={article.author}
+                                />
+                            ))}
                         </div>
 
                     </div>
                 </article>
-
+                {/* Your footer */}
                 <footer className="bottom-0 w-100 ph3 ph5-m ph6-l bg-light-gray z-9999">
                     <small className="f6 db tc">©<b className="ttu">Created by Group CB</b>., All Rights Reserved</small>
                 </footer>

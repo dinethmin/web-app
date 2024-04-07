@@ -1,5 +1,5 @@
-import React from "react";
-import { APIProvider, Map } from '@vis.gl/react-google-maps';
+import React, { useState, useEffect } from "react";
+import { APIProvider, Map, Marker } from '@vis.gl/react-google-maps';
 import { Link, useLocation } from "react-router-dom";
 import Card from "../Card";
 
@@ -9,6 +9,65 @@ const WardenDashbord = () => {
     const location = useLocation();
     const queryParams = new URLSearchParams(location.search);
     const userEmail = queryParams.get('email');
+    const [articles, setArticles] = useState([]);
+    const [markers, setMarkers] = useState([]);
+
+    useEffect(() => {
+        // Fetch articles from the backend API
+        fetch('http://localhost:3000/Articles')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to fetch articles');
+                }
+                return response.json();
+            })
+            .then(data => {
+                setArticles(data); // Assuming the response data is an array of articles
+            })
+            .catch(error => {
+                console.error('Error fetching articles:', error);
+            });
+
+        // Fetch markers from the backend API
+        fetch('http://localhost:3000/WardenProperty')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to fetch markers');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Markers data:', data); // Log markers data
+                const parsedMarkers = data.map(item => {
+                    try {
+                        let markersArray;
+                        // Check if markers property is already an array
+                        if (Array.isArray(item.markers)) {
+                            markersArray = item.markers;
+                        } else {
+                            // Parse markers string to JSON
+                            markersArray = JSON.parse(item.markers.replace(/^"|"$/g, '').replace(/\\"/g, '"'));
+                        }
+                        // Ensure that the markersArray is an array
+                        if (!Array.isArray(markersArray)) {
+                            throw new Error('Markers data is not an array');
+                        }
+                        // Ensure that each marker has lat and lng properties
+                        const validMarkers = markersArray.filter(marker => {
+                            return typeof marker.lat === 'number' && typeof marker.lng === 'number';
+                        });
+                        return validMarkers;
+                    } catch (error) {
+                        console.error('Error parsing markers:', error);
+                        return null;
+                    }
+                });
+                setMarkers(parsedMarkers.filter(marker => marker !== null));
+            })
+            .catch(error => {
+                console.error('Error fetching markers:', error);
+            });
+    }, []);
 
     return (
         <APIProvider apiKey={"AIzaSyDnk8killPj2EO1k_H9V1ocew2crxglWbM"}>
@@ -18,7 +77,7 @@ const WardenDashbord = () => {
                         <Link className="link dim white dib mr3" to={`/WardenDashbord?email=${userEmail}`} title="WardenDashbord">Dashbord</Link>
                         <Link className="link dim white dib mr3" to={`/WardenProfile?email=${userEmail}`} title="WardenProfile">Profile</Link>
                         <Link className="link dim white dib mr3" to={`/WardenProperty?email=${userEmail}`} title="WardenProperty">Property</Link>
-                        <Link className="link dim white dib" to="/Home">Log Out</Link>
+                        <Link className="link dim white dib" to="/Home">Logout</Link>
                     </div>
                     <button className="dtc-l v-mid black dim b--none bg-transparent tl-l" title="Home">
                         <img src="https://www.wikipedia.org/portal/wikipedia.org/assets/img/Wikipedia-logo-v2.png" className="br-100 ba h1 w1 h2-ns w2-ns dib v-mid" alt="Student logo" />
@@ -44,34 +103,42 @@ const WardenDashbord = () => {
                             <div className="tc">
                                 <h1 className="mt0 f4 f3-m f2-ns ">Accommodations</h1>
                                 <div className="m-100 vh-50">
-                                    <Map defaultCenter={position} defaultZoom={12}>
+                                    <Map defaultCenter={position} defaultZoom={15}>
+                                        {/* Render markers */}
+                                        {markers.map((marker, index) => {
+                                            // Check if marker position is wrapped in an array
+                                            const positionData = Array.isArray(marker) ? marker[0] : marker;
+                                            // Ensure that marker position contains valid latitude and longitude values
+                                            if (typeof positionData.lat === 'number' && typeof positionData.lng === 'number') {
+                                                return (
+                                                    <Marker key={index} position={{ lat: positionData.lat, lng: positionData.lng }} />
+                                                );
+                                            } else {
+                                                console.error('Invalid marker position:', marker);
+                                                return null;
+                                            }
+                                        })}
                                     </Map>
                                 </div>
                             </div>
                         </article>
 
-                        <h2 className="tc tracked mt4 mb0 f2 bg-light-gray">Articles</h2>
+                        {/* Articles section */}
+                        <h2 className="tc tracked mt0 mb0 f2 bg-light-gray">Articles</h2>
                         <div className="tc bg-light-gray m0 pb4">
-                            <Card
-                                title={"Tech Giant Invests Huge Money to Build a Computer Out of Science Fiction"}
-                                url={"http://mrmrs.github.io/photos/cpu.jpg"}
-                                by={"Robin Darnell"}
-                            />
-                            <Card
-                                title={"Warehouse Prices Are Fast on the Rise"}
-                                url={"http://mrmrs.github.io/photos/warehouse.jpg"}
-                                by={"Robin Darnell"}
-                            />
-                            <Card
-                                title={"Giant Whale Invests Huge Money to Build a Computer Out of Plankton"}
-                                url={"http://mrmrs.github.io/photos/whale.jpg"}
-                                by={"Robin Darnell"}
-                            />
+                            {articles.map((article, index) => (
+                                <Card
+                                    key={index}
+                                    title={article.headline}
+                                    url={`data:image/jpeg;base64,${article.content_img}`} // Assuming this is the URL of the article's image
+                                    by={article.author}
+                                />
+                            ))}
                         </div>
 
                     </div>
                 </article>
-
+                {/* Your footer */}
                 <footer className="bottom-0 w-100 ph3 ph5-m ph6-l bg-light-gray">
                     <small className="f6 db tc">©<b className="ttu">Created by Group CB</b>., All Rights Reserved</small>
                 </footer>
