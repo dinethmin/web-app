@@ -1,25 +1,68 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-
-const ClearOutput = () => {
-    const Name = document.getElementById('name');
-    const Phone = document.getElementById('phone-number');
-    const Email = document.getElementById('email-address');
-    const Password = document.getElementById('password');
-
-    if (!(Email === "") || !(Password === "") || !(Name === "") || !(Password === "")) {
-        Name.value = "";
-        Phone.value = "";
-        Email.value = "";
-        Password.value = "";
-    }
-
-};
 
 const WardenProfile = () => {
     const location = useLocation();
     const queryParams = new URLSearchParams(location.search);
     const userEmail = queryParams.get('email');
+
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        password: '',
+        phoneNumber: ''
+    });
+
+    useEffect(() => {
+        // Fetch admin profile data
+        fetch(`http://localhost:3000/WardenProfile/${userEmail}`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to fetch profile data');
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Update form data with fetched values
+                setFormData({
+                    name: data.name,
+                    email: data.email,
+                    phoneNumber: data.phone
+                });
+            })
+            .catch(error => {
+                console.error('Error fetching profile data:', error);
+            });
+    }, [userEmail]);
+
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({ ...formData, [name]: value });
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        fetch(`http://localhost:3000/WardenProfile/${userEmail}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to update profile');
+                }
+                setFormData({ ...formData, password: '' });
+                return response.json();
+            })
+            .then(data => {
+                window.alert('Profile updated successfully:', data);
+            })
+            .catch(error => {
+                console.error('Error updating profile:', error);
+            });
+    };
 
     return (
         <>
@@ -44,29 +87,64 @@ const WardenProfile = () => {
                     <h1 className="tc ttu tracked">Profile</h1>
                     <div>
                         <article className="black-80 w-100 tc">
-                            <form>
+                            <form onSubmit={handleSubmit}>
                                 <fieldset id="sign_up" className="ba2 b--transparent ph0 mh0 w-100 pa2 pr2">
+                                    {/* Form inputs */}
                                     <div className="mt3">
                                         <label className="db fw4 lh-copy f6" htmlFor="name">Name</label>
-                                        <input className="pa2 input-reset ba bg-transparent w-90" type="text" name="name" id="name" />
+                                        <input
+                                            className="pa2 input-reset ba bg-transparent w-90"
+                                            type="text"
+                                            name="name"
+                                            id="name"
+                                            value={formData.name}
+                                            onChange={handleInputChange}
+                                        />
                                     </div>
                                     <div className="mt3">
                                         <label className="db fw4 lh-copy f6" htmlFor="email-address">Email address</label>
-                                        <input className="pa2 input-reset ba bg-transparent w-90" type="email" name="email-address" id="email-address" />
+                                        <input
+                                            className="pa2 input-reset ba bg-transparent w-90"
+                                            type="email"
+                                            name="email-address"
+                                            id="email-address"
+                                            value={formData.email}
+                                            onChange={handleInputChange}
+                                        />
                                     </div>
                                     <div className="mt3 fn fl-ns w-50-ns">
                                         <label className="db fw4 lh-copy f6" htmlFor="password">Password</label>
-                                        <input className="pa2 input-reset ba bg-transparent w-80" type="password" name="password" id="password" />
+                                        <input
+                                            className="pa2 input-reset ba bg-transparent w-80"
+                                            type="password"
+                                            name="password"
+                                            id="password"
+                                            value={formData.password}
+                                            onChange={handleInputChange}
+                                        />
                                     </div>
                                     <div className="mt3 fn fl-ns w-50-ns">
                                         <label className="db fw4 lh-copy f6" htmlFor="phone-number">Phone Number</label>
-                                        <input className="pa2 input-reset ba bg-transparent w-80" type="tel" name="phone-number" id="phone-number" />
+                                        <input
+                                            className="pa2 input-reset ba bg-transparent w-80"
+                                            type="tel"
+                                            name="phone-number"
+                                            id="phone-number"
+                                            value={formData.phoneNumber}
+                                            onChange={handleInputChange}
+                                        />
                                     </div>
                                 </fieldset>
+
                                 <div className="mt3">
-                                    <input className="f6 link dim br3 ph3 pv2 mb2 dib white bg-dark-blue w4" type="submit" value="Edit" />
-                                    <input className="f6 link ml5 dim br3 ph3 pv2 mb2 dib white bg-dark-blue w4" type="reset" value="Clear" onClick={ClearOutput} />
+                                    {/* Submit button */}
+                                    <input
+                                        className="f6 link dim br3 ph3 pv2 mb2 dib white bg-dark-blue w4"
+                                        type="submit"
+                                        value="Edit"
+                                    />
                                 </div>
+
                             </form>
                         </article>
                     </div>
