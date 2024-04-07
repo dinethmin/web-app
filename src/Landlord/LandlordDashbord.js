@@ -109,6 +109,7 @@ const Dashboard = () => {
                             <Link className="link f6 f3-ns fw6 tc mt4 db white no-underline underline-hover" to={`/LandlordDashbord?email=${userEmail}`} title="LandlordDashbord">Dashbord</Link>
                             <Link className="link f6 f3-ns fw6 tc mt4 db white no-underline underline-hover" to={`/LandlordProfile?email=${userEmail}`} title="LandlordProfile">Profile</Link>
                             <Link className="link f6 f3-ns fw6 tc mt4 db white no-underline underline-hover" to={`/AddProperty?email=${userEmail}`} title="AddProperty">Property</Link>
+                            <Link className="link f6 f3-ns fw6 tc mt4 db white no-underline underline-hover" to={`/LandlordReservations?email=${userEmail}`} title="LandlordReservations">Reservations</Link>
                             <Link className="f6 f3-ns fw6 tc mt4 db white no-underline underline-hover" to="/Home">Log Out</Link>
                         </div>
                     </div>
