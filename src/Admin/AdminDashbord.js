@@ -30,7 +30,7 @@ const AdminDashbord = () => {
             });
 
         // Fetch markers from the backend API
-        fetch('http://localhost:3000/WardenProperty')
+        fetch('http://localhost:3000/Markers')
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Failed to fetch markers');

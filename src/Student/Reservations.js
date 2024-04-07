@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import ReservationsCard from "../ReservationsCard";
 
 const Hide = () => {
     const column1 = document.getElementById("column_one");
@@ -20,6 +21,27 @@ const Reservations = () => {
     const location = useLocation();
     const queryParams = new URLSearchParams(location.search);
     const userEmail = queryParams.get('email');
+    const [properties, setProperties] = useState([]);
+
+    useEffect(() => {
+        // Fetch all property details from the database
+        fetch('http://localhost:3000/WardenProperty') // Replace with your actual endpoint
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to fetch property details');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Properties data:', data); // Log properties data
+                setProperties(data); // Set the properties state with fetched data
+            })
+            .catch(error => {
+                console.error('Error fetching property details:', error);
+            });
+
+    }, []);
+
     return (
 
         <>
@@ -30,8 +52,9 @@ const Reservations = () => {
                 </button>
             </nav>
 
-            <article className="cf">
-                <div className="fl w-20 bg-navy vh-100 tc" id="column_one">
+            <article style={{ display: 'flex' }}>
+
+                <div className="fl w-20 bg-navy" id="column_one" style={{ flexShrink: 0, overflow: "auto" }}>
                     <div>
                         <Link className="link f6 f3-ns fw6 tc mt4 db white no-underline underline-hover" to={`/Dashbord?email=${userEmail}`} title="Dashbord">Dashbord</Link>
                         <Link className="link f6 f3-ns fw6 tc mt4 db white no-underline underline-hover" to={`/Profile?email=${userEmail}`} title="Profile">Profile</Link>
@@ -39,10 +62,20 @@ const Reservations = () => {
                         <Link className="f6 f3-ns fw6 tc mt4 db white no-underline underline-hover" to="/Home">Log Out</Link>
                     </div>
                 </div>
-                <div className="fl w-80 bg-light-gray vh-100" id="column_two">
+
+                <div className="fl w-50 w-75-ns bg-light-gray" id="column_two" onLoad={useEffect} style={{ flexGrow: 1 }}>
                     <div>
                         <button className="f6 br2 ph3 pv2 mb2 dib black bg-light-gray" id="HideBtn" onClick={Hide}>Hide Blocks</button>
                     </div>
+                    <h1 className="tc ttu tracked">properties</h1>
+                    <div className="tc bg-light-gray m0 pb4">
+
+                        {/* Render PropertyCard components for each property */}
+                        {properties.map((property, index) => (
+                            <ReservationsCard key={index} property={property} />
+                        ))}
+                    </div>
+
                 </div>
             </article>
             <footer className="bottom-0 w-100 ph3 ph5-m ph6-l bg-light-gray z-9999">

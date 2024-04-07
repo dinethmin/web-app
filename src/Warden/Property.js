@@ -20,18 +20,18 @@ const Hide = () => {
 
 const WardenProperty = () => {
     const [markers, setMarkers] = useState([]);
-    const [height, setHeight] = useState(0); // Height state
+    /*const [height, setHeight] = useState(0); // Height state*/
     const position = { lat: 6.8214925581511565, lng: 80.04122509763354 };
     const location = useLocation();
     const queryParams = new URLSearchParams(location.search);
     const userEmail = queryParams.get('email');
-    const [selectedMarkerData, setSelectedMarkerData] = useState(null);
+    /*const [selectedMarkerData, setSelectedMarkerData] = useState(null);*/
     const [properties, setProperties] = useState([]);
 
 
     useEffect(() => {
         // Fetch markers from the backend API
-        fetch('http://localhost:3000/WardenProperty')
+        fetch('http://localhost:3000/Markers')
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Failed to fetch markers');
@@ -108,9 +108,9 @@ const WardenProperty = () => {
     */
 
     // Function to handle marker click and set selected property data
-    const handleMarkerClick = (property) => {
+    /*const handleMarkerClick = (property) => {
         setSelectedMarkerData(property);
-    };
+    };*/
 
 
     return (
@@ -133,8 +133,8 @@ const WardenProperty = () => {
                 <article style={{ display: 'flex' }}>
 
                     <div className="f6 f4-ns w-50 w-25-ns vh-100 bg-washed-green" id="column_one" style={{ flexShrink: 0, overflow: "auto"}}>
-                        <div>
-                            <h2>Properties</h2>
+                        <div className="pa2">
+                            <h1 className="tc">Properties</h1>
                             {/* Render PropertyCard components for each property */}
                             {properties.map((property, index) => (
                                 <PropertyCard key={index} property={property} />
