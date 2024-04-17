@@ -7,6 +7,7 @@ const PostArticles = () => {
     const [authorContent, setAuthorContent] = useState("");
     const [subHeaderContent, setSubHeaderContent] = useState("");
     const [articlecontent, setarticlecontent] = useState("");
+    const [contentImgData, setContentImgData] = useState(null);
 
     const location = useLocation();
     const queryParams = new URLSearchParams(location.search);
@@ -32,13 +33,25 @@ const PostArticles = () => {
         }
     };
 
+    const handleFileInputChange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                setContentImgData(e.target.result); // Set image data as data URL
+                document.getElementById('content_img_preview').src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+    };
+
     const handleButton = () => {
         const formData = new FormData();
         formData.append("headline", headlineContent);
         formData.append("author", authorContent);
         formData.append("subHeader", subHeaderContent);
         formData.append("content", articlecontent);
-        formData.append("content_img", document.getElementById("content_img").files[0]); // Append files to formdata
+        formData.append("content_img", contentImgData); 
 
         fetch('http://localhost:3000/PostArticles', {
             method: 'post',
@@ -122,16 +135,7 @@ const PostArticles = () => {
 
                                     <div className="cf dt-l w-100 bt b--black-10 pv4">
                                         <div className="dtc-l v-mid mw6 pr3-l">
-                                            <input className="pa1 input-reset ba bg-transparent w-80 mb2" type="file" name="content_img" id="content_img" onChange={(e) => {
-                                                const file = e.target.files[0];
-                                                if (file) {
-                                                    const reader = new FileReader();
-                                                    reader.onload = (e) => {
-                                                        document.getElementById('content_img_preview').src = e.target.result;
-                                                    };
-                                                    reader.readAsDataURL(file);
-                                                }
-                                            }} />
+                                            <input className="pa1 input-reset ba bg-transparent w-80 mb2" type="file" name="content_img" id="content_img" onChange={handleFileInputChange} />
 
                                             <img className="w-100" id="content_img_preview" alt="content_img" />
                                         </div>

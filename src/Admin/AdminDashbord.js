@@ -143,11 +143,15 @@ const AdminDashbord = () => {
                         <Card
                             key={index}
                             title={article.headline}
-                            url={`data:image/jpeg;base64,${article.content_img}`} // Assuming this is the URL of the article's image
+                            url={article.content_img.data} // Pass buffer data directly
                             by={article.author}
                         />
                     ))}
                 </div>
+
+
+
+
 
                 {/* Your footer */}
                 <footer className="bottom-0 w-100 ph3 ph5-m ph6-l bg-light-gray z-9999">
