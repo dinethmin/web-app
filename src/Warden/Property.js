@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { APIProvider, Map, Marker } from '@vis.gl/react-google-maps';
 import { Link, useLocation } from "react-router-dom";
 import PropertyCard from "../PropertyCard";
+import { ApiKey } from "../Apikey";
 
 const Hide = () => {
     const column1 = document.getElementById("column_one");
@@ -114,7 +115,7 @@ const WardenProperty = () => {
 
 
     return (
-        <APIProvider apiKey={"AIzaSyDnk8killPj2EO1k_H9V1ocew2crxglWbM"}>
+        <APIProvider apiKey={ApiKey}>
             <>
 
                 <nav className="db dt-l tr w-100 border-box ph5-l bg-dark-blue">

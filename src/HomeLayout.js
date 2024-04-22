@@ -1,12 +1,13 @@
 import React from "react";
 import { APIProvider, Map } from '@vis.gl/react-google-maps';
+import { ApiKey } from "./Apikey";
 
 const position = { lat: 6.8214925581511565, lng: 80.04122509763354 };
 
 const HomeLayout = () => {
     return (
         <>
-            <APIProvider apiKey={"AIzaSyDnk8killPj2EO1k_H9V1ocew2crxglWbM"}>
+            <APIProvider apiKey={ApiKey}>
                 <article
                     className="vh-100 dt w-100 tc br5 dark-green"
                     style={{
