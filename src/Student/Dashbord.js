@@ -3,6 +3,7 @@ import { APIProvider, Map, Marker } from '@vis.gl/react-google-maps';
 import { Link } from "react-router-dom";
 import Card from "../Card";
 import { useLocation } from "react-router-dom";
+import { ApiKey } from "../Apikey";
 
 const position = { lat: 6.8214925581511565, lng: 80.04122509763354 };
 
@@ -92,7 +93,7 @@ const Dashboard = () => {
     };
 
     return (
-        <APIProvider apiKey={"AIzaSyDnk8killPj2EO1k_H9V1ocew2crxglWbM"}>
+        <APIProvider apiKey={ApiKey}>
             <>
                 <nav className="db dt-l w-100 tr border-box ph5-l bg-dark-blue">
                     <button className=" dtc-l v-mid black dim b--none bg-transparent tl-l" title="Home">

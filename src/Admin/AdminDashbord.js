@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { APIProvider, Map, Marker } from '@vis.gl/react-google-maps';
 import './Admin.css';
 import Card from "../Card";
+import { ApiKey } from "../Apikey";
 
 const position = { lat: 6.8214925581511565, lng: 80.04122509763354 };
 
@@ -72,7 +73,7 @@ const AdminDashbord = () => {
 
 
     return (
-        <APIProvider apiKey={"AIzaSyDnk8killPj2EO1k_H9V1ocew2crxglWbM"}>
+        <APIProvider apiKey={ApiKey}>
             <>
                 <nav className="db dt-l tr w-100 border-box ph5-l bg-dark-blue">
                     <div className="fl f7 f4-m f3-ns">

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { APIProvider, Map, Marker } from '@vis.gl/react-google-maps';
 import { Link, useLocation } from "react-router-dom";
+import { ApiKey } from "../Apikey";
 
 const Hide = () => {
     const column1 = document.getElementById("column_one");
@@ -111,7 +112,7 @@ const AddProperty = () => {
 
 
     return (
-        <APIProvider apiKey={"AIzaSyDnk8killPj2EO1k_H9V1ocew2crxglWbM"}>
+        <APIProvider apiKey={ApiKey}>
             <>
                 <nav className="db dt-l w-100 tr border-box ph5-l bg-dark-blue">
                     <button className=" dtc-l v-mid black dim b--none bg-transparent tl-l" title="Home">
